@@ -1,0 +1,120 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Mukesh Parmar Portfolio
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+ </head>
+ <body class="font-poppins">
+  <header>
+   <nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+     <a class="flex items-center" href="#">
+      <img alt="Profile picture of Mukesh Parmar" class="rounded-full" height="35" src="pp.jpg" width="35"/>
+     </a>
+     <button class="text-gray-500 md:hidden block" id="nav-toggle">
+      <i class="fas fa-bars">
+      </i>
+     </button>
+     <div class="hidden md:flex space-x-6" id="nav-content">
+      <a class="text-gray-700 hover:text-blue-500" href="index.html">
+       Home
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="about.html">
+       About
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="services.html">
+       Services
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="projects.html">
+       Projects
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="contact.html">
+       Contact
+      </a>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <section class="section py-8" id="projects" style="display: flex;
+  color: black;
+  flex-direction: column;
+  min-height: 20vh;
+  background: url('bg12.avif') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0 0.2rem ;">
+   <div class="container mx-auto mt-8 px-4">
+    <h2 class="text-3xl font-bold mt-8 mb-6 text-center text-white">
+     Projects
+    </h2>
+   </div>
+  </section>
+  <div class="container mx-auto px-4 py-8">
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-secondary p-6 rounded-lg shadow-md">
+     <img alt="Text to Image Comparator: Text2Visual interface showing text input and image upload options" class="rounded-lg mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/fbA6jT9rC4bNE4q1i5Lq7ZPDLfuo-8tBaVzleu8xtsc.jpg" width="600"/>
+     <h5 class="text-xl font-semibold mb-2">
+      Text to Image Comparator: Text2Visual
+     </h5>
+     <p>
+      A user-friendly interface developed with React.js, enabling easy text input and image uploading for users. The application analyzes the loading speeds of the chosen APIs, presenting users with clear, comparative data and visualizations to evaluate API performance. Text2Visual is engineered to compare various text-to-image APIs, such as OpenAI and OpenJourney, enabling users to evaluate and contrast their performance in real time. Text2Visual is specifically tailored to assess and compare different APIs that convert text to images, aiding in the selection of the most efficient and accurate API for this purpose.
+     </p>
+     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04/Text-to-Image-API-Comparator">Click👆</a></div>
+    </div>
+    <div class="bg-secondary p-6 rounded-lg shadow-md">
+     <img alt="Skill Factory platform interface showing skilled professionals and service options" class="rounded-lg mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/GMXudW2G5se57h0bgNfvTYRQOpt5-RttZqZkJ5HT8X4.jpg" width="600"/>
+     <h5 class="text-xl font-semibold mb-2">
+      Skill Factory
+     </h5>
+     <p>
+      Developed and maintained "Skill Factory", a dynamic platform connecting skilled professionals including carpenters, plumbers, and electricians with individuals in need of their services. Utilized HTML, CSS, JavaScript, SQL, and Python to create an intuitive interface facilitating seamless communication and efficient service delivery. Streamlined the process of hiring skilled workers, resulting in increased accessibility and customer satisfaction.
+     </p>
+     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04">Click👆</a></div>
+    </div>
+    <div class="bg-secondary p-6 rounded-lg shadow-md">
+     <img alt="Face Recognition Attendance System interface showing facial recognition in progress" class="rounded-lg mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/dVePPW_YYDYcorWJgL7KRGXWvQ6eQ2fvAp5Pvc-5OK8.jpg" width="600"/>
+     <h5 class="text-xl font-semibold mb-2">
+      Face Recognition Attendance System
+     </h5>
+     <p>
+      Implemented a facial recognition system to efficiently track student attendance in class. Automated data storage in Excel and the Student Management System. Enhanced student or employee management capabilities and streamlined attendance tracking through technological innovation.
+     </p>
+     <div class="btn btn-primary bt1" ><a  href="https://github.com/Pranavvishwakarma/Face-Recognition-Attendance-System/tree/main">Click👆</a></div>
+    </div>
+   </div>
+  </div>
+  <footer class="bg-gray-800 text-white py-6">
+   <div class="container mx-auto px-4 text-center">
+    <p>
+     © 2024 Mukesh Parmar. All rights reserved.
+    </p>
+   </div>
+  </footer>
+  <script>
+   const navToggle = document.getElementById('nav-toggle');
+        const navContent = document.getElementById('nav-content');
+
+        navToggle.addEventListener('click', () => {
+            navContent.classList.toggle('hidden');
+        });
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyIiSlzpkbtEfpo-ekLBAShD4uQIpkCjUThsW7zx64QmnXCFhxEbMLlsnTzOTB0VeaUEw/exec';
+        const form = document.forms['submit-to-google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message));
+        });
+  </script>
+ </body>
+</html>
