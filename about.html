@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com">
   </script>
   <style>
@@ -21,6 +22,18 @@
         main {
             flex: 1;
         }
+
+        .icon-container:hover {
+            background-color: rgb(223, 221, 221);
+            border-color: #a855f7;
+            border: 3.2px solid #a855f7;
+            transition: background-color 0.3s, border-color 0.3s;
+            /* border-radius: 10px; */
+            transform: scale(1.15);
+            cursor: grab;
+            overflow: hidden;
+            
+        }
   </style>
  </head>
  <body class="font-poppins">
@@ -29,6 +42,7 @@
     <div class="container mx-auto px-4 py-2 flex justify-between items-center">
      <a class="flex items-center" href="#">
       <img alt="Profile picture of Mukesh Parmar" class="rounded-full" height="35" src="pp.jpg" width="35"/>
+      <div class="ml-8 font-bold text-lg">Mukesh Parmar - Code & Create</div>
      </a>
      <button class="text-gray-500 md:hidden block" id="nav-toggle">
       <i class="fas fa-bars">
@@ -74,37 +88,99 @@
      <div class="flex flex-col md:flex-row items-center">
       <img alt="Profile Picture of Mukesh Parmar" class="rounded-3xl w-100 h-100 md:w-200 md:h-200 mb-4 md:mb-0 md:mr-8" height="300" src="pp.jpg" width="1800"/>
       <div class="about-text">
-        <h1 class="text-xl font-semibold" >Hi, I'm Mukesh Parmar</h1>
+        <h1 class="text-3xl font-bold mb-4" >Hi👋</h1>
+        <h1 class="text-3xl font-bold mb-4" > I'm 
+          <span class="text-purple-500 mb-4">Mukesh Parmar</span></h1>
+       <p class="mb-4">
+        I am from <span class="text-purple-500">Indore, Madhya Pradesh, India.</span>
+       </p>
+       <p class="mb-4">
+        I have completed B.tech from Prestige Institute Of Engineering Management And Research, Indore.
+       </p>
        <p class="mb-4">
         I'm a passionate software developer specializing in web development and data analysis. My expertise in React Native allows me to build engaging and intuitive user interfaces for mobile applications. I'm dedicated to implementing robust, performance-optimized solutions that drive user engagement and contribute to business success.
        </p>
-       <h3 class="text-xl font-semibold mb-2">
-        Key Skills
-       </h3>
-       <ul class="list-disc list-inside">
-        <li>
-         HTML &amp; CSS
-        </li>
-        <li>
-         JavaScript
-        </li>
-        <li>
-         ReactJS
-        </li>
-        <li>
-         React Native
-        </li>
-        <li>
-         Python
-        </li>
-        <li>
-         C++
-        </li>
-        <li>
-         SQL
-        </li>
-       </ul>
+       <p class="mb-4">
+        Apart from coding, some other activities that I love to do!
+       </p>
+       <p class="">👉Playing Games</p>
+       <p class="">👉Listen to music</p>
+       <p class="">👉Travel </p>
       </div>
+     </div>
+    </div>
+   </section>
+   <section class="flex items-center justify-center min-h-screen">
+    <div class="text-center">
+     <h1 class="text-3xl font-bold mb-8">
+      Professional
+      <span class="text-purple-500">
+       Skillset
+      </span>
+     </h1>
+     <div class="grid grid-cols-4 gap-12">
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="Python logo" class="mx-auto rounded-lg" height="100" src="python_logo.jpg" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="HTML5 logo" class="mx-auto rounded-lg" height="100" src="html_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="CSS3 logo" class="mx-auto rounded-lg" height="100" src="css_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="Tailwind CSS logo" class="mx-auto rounded-lg" height="100" src="tailwind_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="Bootstrap logo" class="mx-auto rounded-lg" height="100" src="bootstrap_logo.jpg" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="JavaScript logo" class="mx-auto rounded-lg" height="100" src="js_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="React logo" class="mx-auto rounded-lg" height="100" src="react_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="mongoDb logo" class="mx-auto rounded-lg" height="100" src="mongodb_logo.svg" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="C++ logo" class="mx-auto rounded-lg" height="100" src="c++_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="sql logo" class="mx-auto rounded-lg" height="100" src="sql_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+        <img alt="Canva logo" class="mx-auto rounded-lg" height="100" src="canva_logo.jpg" width="100"/>
+       </div>
+      
+     </div>
+    </div>
+   </section>
+   <section class="flex items-center justify-center min-h-screen">
+    <div class="text-center">
+     <h1 class="text-3xl font-bold mb-8">
+      Tools
+      <span class="text-purple-500">
+       I use
+      </span>
+     </h1>
+     <div class="grid grid-cols-4 gap-12">
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="Vscode logo" class="mx-auto rounded-lg" height="100" src="vs_code_logo.png" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+        <img alt="Git logo" class="mx-auto rounded-lg" height="100" src="git_logo.png" width="100"/>
+       </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="postman" class="mx-auto rounded-lg" height="100" src="postman_logo.png" width="100"/>
+      </div>      
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+       <img alt="pycharm" class="mx-auto rounded-lg" height="100" src="pycharm_logo.jpg" width="100"/>
+      </div>
+      <div class="p-4 border border-purple-500 rounded-lg icon-container">
+        <img alt="powerBi logo" class="mx-auto rounded-lg" height="100" src="powerBI_logo.png" width="100"/>
+       </div>
+      
      </div>
     </div>
    </section>
