@@ -212,6 +212,7 @@
                 } else {
                     // alert("Error saving data.");
                     alert("We encountered a server error while saving your data. We apologize for the inconvenience. Would you prefer to share the information via email or LinkedIn instead?");
+                    form.reset();
                 }
             })
             .catch(error => {
