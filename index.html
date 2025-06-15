@@ -1,128 +1,391 @@
+<!DOCTYPE html>
 <html lang="en">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mukesh Parmar Portfolio</title>
+  <title>Mukesh Parmar | Full Stack Developer</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root {
+      --primary: #7c3aed;
+      --primary-light: #8b5cf6;
+      --primary-dark: #6d28d9;
+    }
+    
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
     }
+    
     main {
       flex: 1;
     }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    
+    .scroll-top.active {
+      opacity: 1;
+    }
+    
+    .scroll-top:hover {
+      background-color: var(--primary-dark);
+      transform: scale(1.1);
+    }
   </style>
- </head>
- <body class="font-poppins bg-[url(background_image.jpg)] bg-fixed bg-cover">
-  <header>
-    <nav class="shadow-md">
-      <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-       <a class="flex items-center" href="#">
-        <img alt="Profile picture of Mukesh Parmar" class="rounded-full" height="35" src="logo/pp.jpg" width="35"/>
-        <div class="ml-8 font-bold text-lg">Mukesh Parmar - Code & Create</div>
-       </a>
-       <button class="text-gray-500 md:hidden block" id="nav-toggle">
-        <i class="fas fa-bars">
-        </i>
-       </button>
-       <div class="hidden md:flex space-x-6" id="nav-content">
-        <a class="text-gray-700 hover:text-blue-500" href="index.html">
-         Home
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <nav class="shadow-sm">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a class="flex items-center" href="#">
+          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
         </a>
-        <a class="text-gray-700 hover:text-blue-500" href="about.html">
-         About
-        </a>
-        <a class="text-gray-700 hover:text-blue-500" href="services.html">
-         Services
-        </a>
-        <a class="text-gray-700 hover:text-blue-500" href="projects.html">
-         Projects
-        </a>
-        <a class="text-gray-700 hover:text-blue-500" href="resume.html">
-         Resume
-        </a>
-        <a class="text-gray-700 hover:text-blue-500" href="contact.html">
-         Contact
-        </a>
-       </div>
+        
+        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        
+        <div class="hidden md:flex space-x-1" id="nav-content">
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
+        </div>
       </div>
-      <div class="md:hidden" id="mobile-menu">
-       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="index.html">
-         Home
-        </a>
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="about.html">
-         About
-        </a>
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="services.html">
-         Services
-        </a>
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="projects.html">
-         Projects
-        </a>
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="resume.html">
-         Resume
-        </a>
-        <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="contact.html">
-         Contact
-        </a>
-       </div>
+      
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
+        </div>
       </div>
-     </nav>
+    </nav>
   </header>
-  <main>
-    <section class="section py-8 relative" id="home" style="display: flex;
-    color: black;
-    flex-direction: column;
-    min-height: 80vh;
-    background: url('logo/bg12.avif') no-repeat center center fixed;
-    background-size: cover;">
-     <div class="container mx-auto mt-5 px-4 text-center relative z-10">
-      <h1 class="text-4xl font-bold mt-5 mb-3 text-white">
-       Welcome to My Portfolio
-      </h1>
-      <p class="text-lg mb-6 text-white">
-       Hello, I'm Mukesh Parmar. I'm a Software Developer!
-      </p>
-      <a class="btn btn-primary" href="about.html">
-       Learn More
+
+  <!-- Hero Section -->
+  <section class="hero-section min-h-screen flex items-center pt-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-12 md:mb-0 fade-in">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">Hello, I'm <span class="text-purple-400">Mukesh Parmar</span></h1>
+          <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-purple-200">Full Stack Developer</h2>
+          <p class="text-lg mb-8 text-white opacity-90">I build exceptional digital experiences that are fast, accessible, and visually appealing.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#about" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition duration-300 shadow-lg">Learn More</a>
+            <a href="contact.html" class="px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white hover:text-purple-700 transition duration-300">Contact Me</a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center fade-in">
+          <img src="logo/pp.jpg" alt="Mukesh Parmar" class="rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-4 border-white shadow-xl floating">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-purple-600 text-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-6 fade-in">
+          <div class="text-4xl font-bold mb-2" id="project-count">0</div>
+          <div class="text-lg">Projects Completed</div>
+        </div>
+        <div class="p-6 fade-in">
+          <div class="text-4xl font-bold mb-2" id="client-count">0</div>
+          <div class="text-lg">Happy Clients</div>
+        </div>
+        <div class="p-6 fade-in">
+          <div class="text-4xl font-bold mb-2" id="code-count">0</div>
+          <div class="text-lg">Lines of Code</div>
+        </div>
+        <div class="p-6 fade-in">
+          <div class="text-4xl font-bold mb-2" id="coffee-count">0</div>
+          <div class="text-lg">Cups of Coffee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="py-16 bg-white" id="about">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center relative after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-purple-500 after:bottom-[-8px] after:left-1/4 after:rounded-full">About <span class="text-purple-600">Me</span></h2>
+      <div class="flex flex-col md:flex-row items-center fade-in">
+        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+          <img src="logo/pp.jpg" alt="Mukesh Parmar" class="rounded-2xl w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg">
+        </div>
+        <div class="md:w-2/3 md:pl-12">
+          <p class="mb-4 text-gray-700">I am from <span class="font-medium text-purple-600">Indore, Madhya Pradesh, India.</span></p>
+          <p class="mb-4 text-gray-700">I have completed B.Tech from Prestige Institute Of Engineering Management And Research, Indore.</p>
+          <p class="mb-6 text-gray-700">I'm a passionate software developer specializing in web development and data analysis. My expertise in React Native allows me to build engaging and intuitive user interfaces for mobile applications.</p>
+          <a href="about.html" class="px-6 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition duration-300 inline-flex items-center">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center relative after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-purple-500 after:bottom-[-8px] after:left-1/4 after:rounded-full">My <span class="text-purple-600">Services</span></h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 fade-in">
+          <div class="text-purple-600 mb-4 text-4xl">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Web Development</h3>
+          <p class="text-gray-600">Custom websites and web applications built with modern technologies for optimal performance.</p>
+        </div>
+        <!-- Add 2 more service cards similarly -->
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="services.html" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition duration-300 inline-flex items-center">
+          View All Services <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-purple-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6 fade-in">Ready to Start Your Project?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">Let's work together to create something amazing. Get in touch today!</p>
+      <a href="contact.html" class="px-6 py-3 bg-white text-purple-600 rounded-lg font-medium hover:bg-gray-100 transition duration-300 fade-in">
+        Contact Me
       </a>
-     </div>
-    </section>
-  
-  </main>
-  <footer class="bg-gray-800 text-white py-6 mt-auto">
-   <div class="container mx-auto px-4 text-center">
-    <p>© 2024 Mukesh Parmar. All rights reserved.</p>
-   </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
+          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
+          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter text-xl"></i></a>
+        </div>
+      </div>
+    </div>
   </footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-top" id="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
   <script>
+    // Mobile menu toggle
     const navToggle = document.getElementById('nav-toggle');
-    const navContent = document.getElementById('nav-content');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('block');
     });
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyIiSlzpkbtEfpo-ekLBAShD4uQIpkCjUThsW7zx64QmnXCFhxEbMLlsnTzOTB0VeaUEw/exec';
-    const form = document.forms['submit-to-google-sheet'];
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
+    });
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message));
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Counter animation
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      if (!obj) return;
+      
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateValue('project-count', 0, 15, 2000);
+          animateValue('client-count', 0, 3, 2000);
+          animateValue('code-count', 0, 50000, 2500);
+          animateValue('coffee-count', 0, 1000, 3000);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.5});
+
+    const statsSection = document.querySelector('section.py-16.bg-purple-600');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    // Add fade-in animation to elements when they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+
+    fadeElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeObserver.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
- </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

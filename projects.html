@@ -1,159 +1,406 @@
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Mukesh Parmar Portfolio
-  </title>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.tailwindcss.com">
-  </script>
- </head>
- <body class="font-poppins bg-[url(background_image.jpg)] bg-fixed bg-cover">
-  <header>
-   <nav class="shadow-md">
-    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-     <a class="flex items-center" href="#">
-      <img alt="Profile picture of Mukesh Parmar" class="rounded-full" height="35" src="logo/pp.jpg" width="35"/>
-      <div class="ml-8 font-bold text-lg">Mukesh Parmar - Code & Create</div>
-     </a>
-     <button class="text-gray-500 md:hidden block" id="nav-toggle">
-      <i class="fas fa-bars">
-      </i>
-     </button>
-     <div class="hidden md:flex space-x-6" id="nav-content">
-      <a class="text-gray-700 hover:text-blue-500" href="index.html">
-       Home
-      </a>
-      <a class="text-gray-700 hover:text-blue-500" href="about.html">
-       About
-      </a>
-      <a class="text-gray-700 hover:text-blue-500" href="services.html">
-       Services
-      </a>
-      <a class="text-gray-700 hover:text-blue-500" href="projects.html">
-       Projects
-      </a>
-      <a class="text-gray-700 hover:text-blue-500" href="resume.html">
-        Resume
-       </a>
-      </a>
-      <a class="text-gray-700 hover:text-blue-500" href="contact.html">
-       Contact
-      </a>
-     </div>
-    </div>
-    <div class="md:hidden" id="mobile-menu">
-     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="index.html">
-       Home
-      </a>
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="about.html">
-       About
-      </a>
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="services.html">
-       Services
-      </a>
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="projects.html">
-       Projects
-      </a>
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="resume.html">
-        Resume
-      </a>
-      <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="contact.html">
-       Contact
-      </a>
-     </div>
-    </div>
-   </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Mukesh Parmar Portfolio</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --primary-light: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    main {
+      flex: 1;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .project-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-image {
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    
+    .tech-tag {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .btn-project {
+      background-color: var(--primary);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-project:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    
+    .scroll-top.active {
+      opacity: 1;
+    }
+    
+    .scroll-top:hover {
+      background-color: var(--primary-dark);
+      transform: scale(1.1);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      bottom: -10px;
+      left: 25%;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <nav class="shadow-sm">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a class="flex items-center" href="index.html">
+          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        </a>
+        
+        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        
+        <div class="hidden md:flex space-x-8" id="nav-content">
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
   </header>
-  <section class="section py-8" id="projects" style="display: flex;
-  color: black;
-  flex-direction: column;
-  min-height: 20vh;
-  background: url('logo/bg12.avif') no-repeat center center fixed;
-  background-size: cover;
-  margin: 0 0.2rem ;">
-   <div class="container mx-auto mt-8 px-4">
-    <h2 class="text-3xl font-bold mt-8 mb-6 text-center text-white">
-     Projects
-    </h2>
-   </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section py-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
+    <div class="container mx-auto px-4 relative z-10 flex items-center justify-center min-h-[30vh]">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 fade-in">My Projects</h1>
+        <p class="text-xl text-white opacity-90 max-w-2xl mx-auto fade-in">Explore my portfolio of innovative solutions and creative implementations</p>
+      </div>
+    </div>
   </section>
-  <div class="container mx-auto px-4 py-8">
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-secondary p-6 rounded-lg shadow-md">
-     <img alt="Text to Image Comparator: Text2Visual interface showing text input and image upload options" class="rounded-lg mb-4 h-64" height="400" src="https://storage.googleapis.com/a1aa/image/fbA6jT9rC4bNE4q1i5Lq7ZPDLfuo-8tBaVzleu8xtsc.jpg" width="600"/>
-     <h5 class="text-xl font-semibold mb-2">
-      Text to Image Comparator: Text2Visual
-     </h5>
-     <p>
-      A user-friendly interface developed with React.js, enabling easy text input and image uploading for users. The application analyzes the loading speeds of the chosen APIs, presenting users with clear, comparative data and visualizations to evaluate API performance. Text2Visual is engineered to compare various text-to-image APIs, such as OpenAI and OpenJourney, enabling users to evaluate and contrast their performance in real time. Text2Visual is specifically tailored to assess and compare different APIs that convert text to images, aiding in the selection of the most efficient and accurate API for this purpose.
-     </p>
-     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04/Text-to-Image-API-Comparator">Click👆</a></div>
+
+  <!-- Projects Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">Featured <span class="text-purple-600">Work</span></h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Text to Image Comparator -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+          <div class="overflow-hidden h-64">
+            <img src="https://storage.googleapis.com/a1aa/image/fbA6jT9rC4bNE4q1i5Lq7ZPDLfuo-8tBaVzleu8xtsc.jpg" alt="Text to Image Comparator" class="w-full h-full object-cover project-image">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Text to Image Comparator: Text2Visual</h3>
+            <p class="text-gray-600 mb-4">A React.js interface comparing text-to-image APIs like OpenAI and OpenJourney, analyzing performance metrics and loading speeds.</p>
+            
+            <div class="mb-4">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">API Integration</span>
+              <span class="tech-tag">Performance Analysis</span>
+            </div>
+            
+            <a href="https://github.com/Mukeshparmar04/Text-to-Image-API-Comparator" target="_blank" class="btn-project inline-block px-4 py-2 rounded-lg font-medium">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navodaya Community -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+          <div class="overflow-hidden h-64">
+            <img src="https://cdn.prod.website-files.com/5f08c2bdc085172b99006a91/679c01255c56948c431f1398_360Alumni-alumni-community-higher-ed.webp" alt="Text to Image Comparator" class="w-full h-full object-cover project-image">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Navodayan Alumni: NPL</h3>
+            <p class="text-gray-600 mb-4">The Navodayan Alumni Web Portal is a digital space built with React, Node.js, and MongoDB to connect JNV alumni. It's designed to preserve memories, facilitate networking, and encourage mutual support.</p>
+            
+            <div class="mb-4">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+            
+            <a href="https://github.com/Mukeshparmar04/NPL-Navodaya-Community" target="_blank" class="btn-project inline-block px-4 py-2 rounded-lg font-medium">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Skill Factory -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+          <div class="overflow-hidden h-64">
+            <img src="logo/skillF.jpg" alt="Skill Factory" class="w-full h-full object-cover project-image">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Skill Factory</h3>
+            <p class="text-gray-600 mb-4">A platform connecting skilled professionals (carpenters, plumbers, electricians) with clients, built with HTML, CSS, JavaScript, and Python.</p>
+            
+            <div class="mb-4">
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+            </div>
+            
+            <a href="https://github.com/Mukeshparmar04" target="_blank" class="btn-project inline-block px-4 py-2 rounded-lg font-medium">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Face Recognition Attendance System -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+          <div class="overflow-hidden h-64">
+            <img src="logo/face11.jpg" alt="Face Recognition Attendance System" class="w-full h-full object-cover project-image">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Face Recognition Attendance System</h3>
+            <p class="text-gray-600 mb-4">Automated attendance tracking using facial recognition technology with data storage in Excel and Student Management System.</p>
+            
+            <div class="mb-4">
+              <span class="tech-tag">Face Recognition</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Excel Integration</span>
+            </div>
+            
+            <a href="https://github.com/Mukeshparmar04/Face-Recognition-Attendance-System" target="_blank" class="btn-project inline-block px-4 py-2 rounded-lg font-medium">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Banking Bot -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+          <div class="overflow-hidden h-64">
+            <img src="logo/bankB11.webp" alt="Banking Bot" class="w-full h-full object-cover project-image">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Banking Bot</h3>
+            <p class="text-gray-600 mb-4">A 24/7 banking assistant providing immediate solutions to customer queries and simplifying complex banking processes.</p>
+            
+            <div class="mb-4">
+              <span class="tech-tag">Chatbot</span>
+              <span class="tech-tag">Natural Language Processing</span>
+              <span class="tech-tag">Banking Integration</span>
+            </div>
+            
+            <a href="https://github.com/Mukeshparmar04" target="_blank" class="btn-project inline-block px-4 py-2 rounded-lg font-medium">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Additional project cards can be added here following the same pattern -->
+      </div>
     </div>
-    <div class="bg-secondary p-6 rounded-lg shadow-md">
-     <img alt="Skill Factory platform interface showing skilled professionals and service options" class="rounded-lg mb-4 h-64" height="400" src="logo/skillF.jpg" width="600"/>
-     <h5 class="text-xl font-semibold mb-2">
-      Skill Factory
-     </h5>
-     <p>
-      Developed and maintained "Skill Factory", a dynamic platform connecting skilled professionals including carpenters, plumbers, and electricians with individuals in need of their services. Utilized HTML, CSS, JavaScript, SQL, and Python to create an intuitive interface facilitating seamless communication and efficient service delivery. Streamlined the process of hiring skilled workers, resulting in increased accessibility and customer satisfaction.
-     </p>
-     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04">Click👆</a></div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-purple-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6 fade-in">Have a Project in Mind?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">Let's collaborate to bring your ideas to life with innovative solutions.</p>
+      <a href="contact.html" class="inline-block px-8 py-3 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition duration-300 fade-in">
+        Contact Me
+      </a>
     </div>
-    <div class="bg-secondary p-6 rounded-lg shadow-md">
-     <img alt="Face Recognition Attendance System interface showing facial recognition in progress" class="rounded-lg mb-4 h-64" height="400" src="logo/face11.jpg" width="600"/>
-     <h5 class="text-xl font-semibold mb-2">
-      Face Recognition Attendance System
-     </h5>
-     <p>
-      Implemented a facial recognition system to efficiently track student attendance in class. Automated data storage in Excel and the Student Management System. Enhanced student or employee management capabilities and streamlined attendance tracking through technological innovation.
-     </p>
-     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04/Face-Recognition-Attendance-System">Click👆</a></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
+          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
+          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter text-xl"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="bg-secondary p-6 rounded-lg shadow-md">
-     <img alt="Banking at your fingertips, 24/7." class="rounded-lg mb-4 h-64" height="400" src="logo/bankB11.webp" width="600"/>
-     <h5 class="text-xl font-semibold mb-2">
-        Banking Bot
-     </h5>
-     <p>
-        This project aims to develop a robust Banking Bot designed to revolutionize customer interaction with banking services. The bot's core function is to deliver immediate solutions to customer queries, simplifying complex banking processes. By providing 24/7 assistance, it eliminates wait times and enhances accessibility.
-     </p>
-     <div class="btn btn-primary bt1" ><a  href="https://github.com/Mukeshparmar04">Click👆</a></div>
-    </div>
-   </div>
-  </div>
-  <footer class="bg-gray-800 text-white py-6">
-   <div class="container mx-auto px-4 text-center">
-    <p>
-     © 2024 Mukesh Parmar. All rights reserved.
-    </p>
-   </div>
   </footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-top" id="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
   <script>
-   const navToggle = document.getElementById('nav-toggle');
-        const navContent = document.getElementById('nav-content');
-        const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        navToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('block');
+    });
 
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
+    });
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyIiSlzpkbtEfpo-ekLBAShD4uQIpkCjUThsW7zx64QmnXCFhxEbMLlsnTzOTB0VeaUEw/exec';
-        const form = document.forms['submit-to-google-sheet'];
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message));
-        });
+    // Add fade-in animation to elements when they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+
+    fadeElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeObserver.observe(el);
+    });
   </script>
- </body>
+</body>
 </html>

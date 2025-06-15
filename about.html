@@ -1,240 +1,663 @@
 <html lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Mukesh Parmar Portfolio
-  </title>
+  <title>Mukesh Parmar Portfolio</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-   body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        main {
-            flex: 1;
-        }
+    main {
+      flex: 1;
+    }
 
-        .icon-container:hover {
-            background-color: rgb(223, 221, 221);
-            border-color: #a855f7;
-            border: 3.2px solid #a855f7;
-            transition: background-color 0.3s, border-color 0.3s;
-            /* border-radius: 10px; */
-            transform: scale(1.15);
-            cursor: grab;
-            overflow: hidden;
-            
-        }
+    .icon-container {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-container:hover {
+      background-color: rgba(168, 85, 247, 0.1);
+      border-color: #a855f7;
+      border: 2px solid #a855f7;
+      transform: translateY(-5px) scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 10px 15px rgba(168, 85, 247, 0.2);
+    }
+
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #a855f7;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .profile-img {
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-img:hover {
+      transform: scale(1.03);
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -8px;
+      left: 25%;
+      background: linear-gradient(90deg, #a855f7, transparent);
+      border-radius: 3px;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .skill-card {
+      perspective: 1000px;
+    }
+
+    .skill-card-inner {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .skill-card:hover .skill-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .skill-card-front, .skill-card-back {
+      backface-visibility: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .skill-card-back {
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #a855f7;
+      color: white;
+      border-radius: 0.5rem;
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #a855f7;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+    }
+
+    .scroll-top:hover {
+      background-color: #9333ea;
+      transform: scale(1.1);
+    }
   </style>
- </head>
- <body class="font-poppins bg-[url(background_image.jpg)] bg-fixed bg-cover">
-  <header>
-    <nav class=" shadow-md">
-        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-         <a class="flex items-center" href="#">
-          <img alt="Profile picture of Mukesh Parmar" class="rounded-full" height="35" src="logo/pp.jpg" width="35"/>
-          <div class="ml-8 font-bold text-lg">Mukesh Parmar - Code & Create</div>
-         </a>
-         <button class="text-gray-500 md:hidden block" id="nav-toggle">
-          <i class="fas fa-bars">
-          </i>
-         </button>
-         <div class="hidden md:flex space-x-6" id="nav-content">
-          <a class="text-gray-700 hover:text-blue-500" href="index.html">
-           Home
-          </a>
-          <a class="text-gray-700 hover:text-blue-500" href="about.html">
-           About
-          </a>
-          <a class="text-gray-700 hover:text-blue-500" href="services.html">
-           Services
-          </a>
-          <a class="text-gray-700 hover:text-blue-500" href="projects.html">
-           Projects
-          </a>
-          <a class="text-gray-700 hover:text-blue-500" href="resume.html">
-           Resume
-          </a>
-          <a class="text-gray-700 hover:text-blue-500" href="contact.html">
-           Contact
-          </a>
-         </div>
+</head>
+<body class="font-poppins bg-gray-50">
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <nav class="shadow-md">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a class="flex items-center" href="#">
+          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
+          <div class="ml-4 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        </a>
+        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <div class="hidden md:flex space-x-8" id="nav-content">
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
         </div>
-        <div class="md:hidden" id="mobile-menu">
-         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="index.html">
-           Home
-          </a>
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="about.html">
-           About
-          </a>
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="services.html">
-           Services
-          </a>
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="projects.html">
-           Projects
-          </a>
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="resume.html">
-            Resume
-          </a>
-          <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500" href="contact.html">
-           Contact
-          </a>
-         </div>
+      </div>
+      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
         </div>
-       </nav>
+      </div>
+    </nav>
   </header>
+
   <main>
-    <section class="section py-8" id="projects" style="display: flex;
-  color: black;
-  flex-direction: column;
-  min-height: 20vh;
-  background: url('logo/bg12.avif') no-repeat center center fixed;
-  background-size: cover;
-  margin: 0 0.2rem ;">
-   <div class="container mx-auto mt-8 px-4">
-    <h2 class="text-3xl font-bold mt-8 mb-6 text-center text-white">
-     About Me
-    </h2>
-   </div>
-  </section>
-  
-   <section class="section py-8" id="about">
-    <div class="container mx-auto px-4 pt-8">
-     <div class="flex flex-col md:flex-row items-center">
-      <img alt="Profile Picture of Mukesh Parmar" class="rounded-3xl w-100 h-100 md:w-200 md:h-200 mb-4 md:mb-0 md:mr-8" height="300" src="logo/pp.jpg" width="1800"/>
-      <div class="about-text">
-        <h1 class="text-3xl font-bold mb-4" >Hi👋</h1>
-        <h1 class="text-3xl font-bold mb-4" > I'm 
-          <span class="text-purple-500 mb-4">Mukesh Parmar</span></h1>
-       <p class="mb-4">
-        I am from <span class="text-purple-500">Indore, Madhya Pradesh, India.</span>
-       </p>
-       <p class="mb-4">
-        I have completed B.tech from Prestige Institute Of Engineering Management And Research, Indore.
-       </p>
-       <p class="mb-4">
-        I'm a passionate software developer specializing in web development and data analysis. My expertise in React Native allows me to build engaging and intuitive user interfaces for mobile applications. I'm dedicated to implementing robust, performance-optimized solutions that drive user engagement and contribute to business success.
-       </p>
-       <p class="mb-4">
-        Apart from coding, some other activities that I love to do!
-       </p>
-       <p class="">👉Playing Games</p>
-       <p class="">👉Listen to music</p>
-       <p class="">👉Travel </p>
+    <!-- Hero Section -->
+    <section class="hero-section py-10 bg-gradient-to-r from-purple-700 to-blue-600 text-white">
+      <div class="container mx-auto px-4 hero-content">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-yellow-300">Mukesh Parmar</span></h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6">Full Stack Developer</h2>
+            <p class="text-lg mb-8 opacity-90">Building digital experiences that matter with clean code and creative solutions.</p>
+            <div class="flex space-x-4">
+              <a href="contact.html" class="bg-white text-purple-700 px-6 py-3 rounded-lg font-medium hover:bg-purple-100 transition duration-300 shadow-lg">Hire Me</a>
+              <a href="projects.html" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-700 transition duration-300">My Work</a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center fade-in">
+            <img src="logo/pp.jpg" alt="Mukesh Parmar" class="profile-img rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-4 border-white shadow-xl floating">
+          </div>
+        </div>
       </div>
-     </div>
-    </div>
-   </section>
-   <section class="flex items-center justify-center min-h-screen">
-    <div class="text-center">
-     <h1 class="text-3xl font-bold mb-8">
-      Professional
-      <span class="text-purple-500">
-       Skillset
-      </span>
-     </h1>
-     <div class="grid grid-cols-4 gap-12 m-8">
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="Python logo" class="mx-auto rounded-lg" height="100" src="logo/python_logo.jpg" width="100"/>
+    </section>
+
+    <!-- About Section -->
+    <section class="section py-16 bg-white" id="about">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">About Me</h2>
+        <div class="flex flex-col md:flex-row items-center fade-in">
+          <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+            <img alt="Profile Picture of Mukesh Parmar" class="profile-img rounded-2xl w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg" src="logo/pp.jpg"/>
+          </div>
+          <div class="md:w-2/3 md:pl-12">
+            <h1 class="text-3xl font-bold mb-4">Hi 👋 I'm <span class="text-purple-600">Mukesh Parmar</span></h1>
+            <div class="space-y-4 text-gray-700">
+              <p>I am from <span class="font-medium text-purple-600">Indore, Madhya Pradesh, India.</span></p>
+              <p>I have completed B.Tech from Prestige Institute Of Engineering Management And Research, Indore.</p>
+              <p>I'm a passionate software developer specializing in web development and data analysis. My expertise in React Native allows me to build engaging and intuitive user interfaces for mobile applications. I'm dedicated to implementing robust, performance-optimized solutions that drive user engagement and contribute to business success.</p>
+              <div class="pt-2">
+                <p class="font-medium">Apart from coding, some other activities that I love to do!</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                  <li>Playing Games</li>
+                  <li>Listening to music</li>
+                  <li>Traveling</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-8 flex space-x-4">
+              <a href="MukeshPResume.pdf" download class="bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 transition duration-300 flex items-center">
+                <i class="fas fa-download mr-2"></i> Download CV
+              </a>
+              <a href="contact.html" class="border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-lg font-medium hover:bg-purple-50 transition duration-300 flex items-center">
+                <i class="fas fa-envelope mr-2"></i> Contact Me
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="HTML5 logo" class="mx-auto rounded-lg" height="100" src="logo/html_logo.png" width="100"/>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section py-16 bg-gray-50" id="skills">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">
+          Professional <span class="text-purple-600">Skillset</span>
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 fade-in">
+          <!-- Python -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="Python logo" class="mx-auto h-16 w-16 object-contain" src="logo/python_logo.jpg"/>
+                <p class="mt-2 font-medium">Python</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Advanced</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- HTML -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="HTML5 logo" class="mx-auto h-16 w-16 object-contain" src="logo/html_logo.png"/>
+                <p class="mt-2 font-medium">HTML5</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Expert</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CSS -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="CSS3 logo" class="mx-auto h-16 w-16 object-contain" src="logo/css_logo.png"/>
+                <p class="mt-2 font-medium">CSS3</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Expert</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tailwind -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="Tailwind CSS logo" class="mx-auto h-16 w-16 object-contain" src="logo/tailwind_logo.png"/>
+                <p class="mt-2 font-medium">Tailwind</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Advanced</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bootstrap -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="Bootstrap logo" class="mx-auto h-16 w-16 object-contain" src="logo/bootstrap_logo.jpg"/>
+                <p class="mt-2 font-medium">Bootstrap</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Advanced</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- JavaScript -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="JavaScript logo" class="mx-auto h-16 w-16 object-contain" src="logo/js_logo.png"/>
+                <p class="mt-2 font-medium">JavaScript</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Intermediate</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- React -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="React logo" class="mx-auto h-16 w-16 object-contain" src="logo/react_logo.png"/>
+                <p class="mt-2 font-medium">React</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Intermediate</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- MongoDB -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="mongoDb logo" class="mx-auto h-16 w-16 object-contain" src="logo/mongodb_logo.svg"/>
+                <p class="mt-2 font-medium">MongoDB</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Intermediate</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- C++ -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="C++ logo" class="mx-auto h-16 w-16 object-contain" src="logo/c++_logo.png"/>
+                <p class="mt-2 font-medium">C++</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Advanced</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- SQL -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="sql logo" class="mx-auto h-16 w-16 object-contain" src="logo/sql_logo.png"/>
+                <p class="mt-2 font-medium">SQL</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Intermediate</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="CSS3 logo" class="mx-auto rounded-lg" height="100" src="logo/css_logo.png" width="100"/>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="section py-16 bg-white" id="tools">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">
+          Tools <span class="text-purple-600">I Use</span>
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 fade-in">
+          <!-- VS Code -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="Vscode logo" class="mx-auto h-16 w-16 object-contain" src="logo/vs_code_logo.png"/>
+                <p class="mt-2 font-medium">VS Code</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Primary Editor</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Git -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="Git logo" class="mx-auto h-16 w-16 object-contain" src="logo/git_logo.png"/>
+                <p class="mt-2 font-medium">Git</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Version Control</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Postman -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="postman" class="mx-auto h-16 w-16 object-contain" src="logo/postman_logo.png"/>
+                <p class="mt-2 font-medium">Postman</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">API Testing</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PyCharm -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="pycharm" class="mx-auto h-16 w-16 object-contain" src="logo/pycharm_logo.jpg"/>
+                <p class="mt-2 font-medium">PyCharm</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Python IDE</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Power BI -->
+          <div class="skill-card h-32">
+            <div class="skill-card-inner h-full w-full">
+              <div class="skill-card-front p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center icon-container">
+                <img alt="powerBi logo" class="mx-auto h-16 w-16 object-contain" src="logo/powerBI_logo.png"/>
+                <p class="mt-2 font-medium">Power BI</p>
+              </div>
+              <div class="skill-card-back">
+                <p class="font-bold">Data Visualization</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="Tailwind CSS logo" class="mx-auto rounded-lg" height="100" src="logo/tailwind_logo.png" width="100"/>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-purple-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="p-6 fade-in">
+            <div class="text-4xl font-bold mb-2" id="project-count">0</div>
+            <div class="text-lg">Projects Completed</div>
+          </div>
+          <div class="p-6 fade-in">
+            <div class="text-4xl font-bold mb-2" id="client-count">0</div>
+            <div class="text-lg">Happy Clients</div>
+          </div>
+          <div class="p-6 fade-in">
+            <div class="text-4xl font-bold mb-2" id="code-count">0</div>
+            <div class="text-lg">Lines of Code</div>
+          </div>
+          <div class="p-6 fade-in">
+            <div class="text-4xl font-bold mb-2" id="coffee-count">0</div>
+            <div class="text-lg">Cups of Coffee</div>
+          </div>
+        </div>
       </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="Bootstrap logo" class="mx-auto rounded-lg" height="100" src="logo/bootstrap_logo.jpg" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="JavaScript logo" class="mx-auto rounded-lg" height="100" src="logo/js_logo.png" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="React logo" class="mx-auto rounded-lg" height="100" src="logo/react_logo.png" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="mongoDb logo" class="mx-auto rounded-lg" height="100" src="logo/mongodb_logo.svg" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="C++ logo" class="mx-auto rounded-lg" height="100" src="logo/c++_logo.png" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="sql logo" class="mx-auto rounded-lg" height="100" src="logo/sql_logo.png" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-        <img alt="Canva logo" class="mx-auto rounded-lg" height="100" src="logo/canva_logo.jpg" width="100"/>
-       </div>
-      
-     </div>
-    </div>
-   </section>
-   <section class="flex items-center justify-center min-h-screen">
-    <div class="text-center">
-     <h1 class="text-3xl font-bold mb-8">
-      Tools
-      <span class="text-purple-500">
-       I use
-      </span>
-     </h1>
-     <div class="grid grid-cols-4 gap-12 m-8">
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="Vscode logo" class="mx-auto rounded-lg" height="100" src="logo/vs_code_logo.png" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-        <img alt="Git logo" class="mx-auto rounded-lg" height="100" src="logo/git_logo.png" width="100"/>
-       </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="postman" class="mx-auto rounded-lg" height="100" src="logo/postman_logo.png" width="100"/>
-      </div>      
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-       <img alt="pycharm" class="mx-auto rounded-lg" height="100" src="logo/pycharm_logo.jpg" width="100"/>
-      </div>
-      <div class="p-4 border border-purple-500 rounded-lg icon-container">
-        <img alt="powerBi logo" class="mx-auto rounded-lg" height="100" src="logo/powerBI_logo.png" width="100"/>
-       </div>
-      
-     </div>
-    </div>
-   </section>
+    </section>
   </main>
-  <footer class="bg-gray-800 text-white py-6 mt-auto">
-   <div class="container mx-auto px-4 text-center">
-    <p>
-     © 2024 Mukesh Parmar. All rights reserved.
-    </p>
-   </div>
+
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center">
+            <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-12 w-12 border-2 border-purple-500" src="logo/pp.jpg"/>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">Mukesh Parmar</h3>
+              <p class="text-gray-400">Full Stack Developer</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+            <li><a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a></li>
+            <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-3">Connect With Me</h4>
+          <div class="flex space-x-4">
+            <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Mukeshparmar04" class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.codechef.com/users/pr0863cs201093" class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+              <i class="fas fa-code text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/mukesh_p04/" class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+        <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-top" id="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
   <script>
-   const navToggle = document.getElementById('nav-toggle');
-        const navContent = document.getElementById('nav-content');
-        const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        navToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('block');
+    });
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyIiSlzpkbtEfpo-ekLBAShD4uQIpkCjUThsW7zx64QmnXCFhxEbMLlsnTzOTB0VeaUEw/exec';
-        const form = document.forms['submit-to-google-sheet'];
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
+    });
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message));
-        });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Counter animation
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateValue('project-count', 0, 15, 2000);
+          animateValue('client-count', 0, 3, 2000);
+          animateValue('code-count', 0, 50000, 2500);
+          animateValue('coffee-count', 0, 1000, 3000);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.5});
+
+    const statsSection = document.querySelector('section.py-12.bg-purple-600');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    // Add fade-in animation to elements when they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+
+    fadeElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeObserver.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   </script>
- </body>
+</body>
 </html>
