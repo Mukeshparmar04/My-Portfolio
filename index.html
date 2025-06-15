@@ -445,8 +445,8 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateValue('project-count', 0, 25, 2000);
-          animateValue('client-count', 0, 15, 2000);
+          animateValue('project-count', 0, 15, 2000);
+          animateValue('client-count', 0, 3, 2000);
           animateValue('code-count', 0, 50000, 2500);
           animateValue('coffee-count', 0, 1000, 3000);
           observer.unobserve(entry.target);
