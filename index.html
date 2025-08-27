@@ -3,19 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mukesh Parmar - Full Stack Developer specializing in web development, React Native, and data analysis. Creating exceptional digital experiences.">
+  <meta name="keywords" content="Full Stack Developer, Web Developer, React Native, Data Analysis, Portfolio">
+  <meta name="author" content="Mukesh Parmar">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mukeshparmar.com/">
+  <meta property="og:title" content="Mukesh Parmar | Full Stack Developer">
+  <meta property="og:description" content="Full Stack Developer specializing in web development, React Native, and data analysis.">
+  <meta property="og:image" content="https://mukeshparmar.com/logo/pp.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mukeshparmar.com/">
+  <meta property="twitter:title" content="Mukesh Parmar | Full Stack Developer">
+  <meta property="twitter:description" content="Full Stack Developer specializing in web development, React Native, and data analysis.">
+  <meta property="twitter:image" content="https://mukeshparmar.com/logo/pp.jpg">
+  
   <title>Mukesh Parmar | Full Stack Developer</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link rel="icon" type="image/x-icon" href="logo/pp.jpg">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     :root {
       --primary: #7c3aed;
       --primary-light: #8b5cf6;
       --primary-dark: #6d28d9;
+      --secondary: #06d6a0;
       --dark: #1e293b;
       --light: #f8fafc;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     body {
@@ -24,10 +54,25 @@
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
     }
     
     main {
       flex: 1;
+    }
+    
+    /* Improved Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(139, 92, 246, 0.8)), url('logo/bg12.avif') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      isolation: isolate;
     }
     
     .hero-section::before {
@@ -37,77 +82,258 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    
+    /* Enhanced Navigation */
+    .nav-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
     }
     
     .nav-link {
       position: relative;
+      transition: var(--transition);
+      font-weight: 500;
     }
     
     .nav-link::after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
+      height: 3px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
     }
     
-    .nav-link:hover::after {
-      width: 100%;
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
     }
     
+    .nav-link:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile Menu Improvements */
+    #mobile-menu {
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--primary);
+    }
+    
+    /* Button Styles */
     .btn-primary {
-      background-color: var(--primary);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transition: var(--transition);
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 12px 28px;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
     }
     
     .btn-primary:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
     .btn-outline {
       border: 2px solid var(--primary);
       color: var(--primary);
-      transition: all 0.3s ease;
+      background: transparent;
+      transition: var(--transition);
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 12px 28px;
     }
     
     .btn-outline:hover {
-      background-color: var(--primary);
+      background: var(--primary);
       color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    }
+    
+    /* Profile Image Animation */
+    .profile-img {
+      border: 4px solid white;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     }
     
     .floating {
-      animation: floating 3s ease-in-out infinite;
+      animation: floating 4s ease-in-out infinite;
     }
     
     @keyframes floating {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(1deg); }
     }
     
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(360deg); }
+    }
+    
+    .counter-item {
+      transition: var(--transition);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .counter-item:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
+    
+    /* Section Styles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 5px;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+    
+    .section-title:hover::after {
+      width: 120px;
+    }
+    
+    /* Card Styles */
+    .service-card {
+      transition: var(--transition);
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      height: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+      border-color: var(--primary-light);
+    }
+    
+    .service-icon {
+      transition: var(--transition);
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    
+    .service-card:hover .service-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    .project-card {
+      transition: var(--transition);
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      height: 100%;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+    }
+    
+    .project-image {
+      transition: transform 0.5s ease;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.1);
+    }
+    
+    /* Animation Classes */
     .fade-in {
-      animation: fadeIn 1s ease-in;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
+    /* Scroll to Top Button */
     .scroll-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border-radius: 50%;
       display: flex;
@@ -115,140 +341,246 @@
       justify-content: center;
       cursor: pointer;
       opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 99;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
     }
     
     .scroll-top.active {
       opacity: 1;
+      visibility: visible;
     }
     
     .scroll-top:hover {
-      background-color: var(--primary-dark);
-      transform: scale(1.1);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
-    .section-title {
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #0f172a);
       position: relative;
-      display: inline-block;
+      overflow: hidden;
     }
     
-    .section-title::after {
+    footer::before {
       content: '';
       position: absolute;
-      width: 50%;
-      height: 4px;
-      bottom: -8px;
-      left: 25%;
-      background: linear-gradient(90deg, var(--primary), transparent);
-      border-radius: 3px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
     
-    .service-card {
-      transition: all 0.3s ease;
-      perspective: 1000px;
+    .social-link {
+      transition: var(--transition);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
     }
     
-    .service-icon {
-      transition: all 0.3s ease;
+    /* Responsive Design Improvements */
+    @media (max-width: 768px) {
+      .hero-section {
+        background-attachment: scroll;
+        text-align: center;
+        padding: 2rem 0;
+      }
+      
+      .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .stats-section .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .service-card, .project-card {
+        margin-bottom: 2rem;
+      }
+      
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
     }
     
-    .service-card:hover .service-icon {
-      transform: scale(1.1);
-      color: var(--primary);
+    @media (max-width: 480px) {
+      .stats-section .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
     }
     
-    .counter-item {
-      transition: all 0.3s ease;
+    /* Reduced motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
     
-    .counter-item:hover {
-      transform: scale(1.05);
+    /* Focus styles for accessibility */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+    
+    /* Loading animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 9999;
+      transition: width 0.4s ease;
     }
   </style>
 </head>
 <body class="bg-gray-50">
+  <!-- Loading Bar -->
+  <div class="loading-bar" id="loading-bar"></div>
+
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <nav class="shadow-sm">
+  <header class="sticky top-0 z-50 nav-container">
+    <nav>
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a class="flex items-center" href="#">
-          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
-          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        <a class="flex items-center" href="#" aria-label="Home">
+          <img alt="Mukesh Parmar - Full Stack Developer" 
+               class="rounded-full h-12 w-12 border-2 border-purple-500" 
+               src="logo/pp.jpg" 
+               width="48" 
+               height="48"
+               loading="eager">
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            Mukesh Parmar
+          </div>
         </a>
         
-        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+        <button class="text-gray-700 md:hidden block focus:outline-none" 
+                id="nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
           <i class="fas fa-bars text-xl"></i>
         </button>
         
         <div class="hidden md:flex space-x-8" id="nav-content">
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" href="index.html">Home</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" 
+             href="index.html" 
+             aria-current="page">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="contact.html">Contact</a>
         </div>
       </div>
       
       <!-- Mobile Menu -->
-      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
-        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" href="index.html">Home</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
+      <div class="md:hidden hidden bg-white shadow-xl" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" 
+             href="index.html" 
+             aria-current="page">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="contact.html">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section min-h-screen flex items-center pt-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
+  <section class="hero-section">
     <div class="container mx-auto px-4 relative z-10">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-12 md:mb-0 fade-in">
-          <h1 class="text-4xl md:text-5xl text-white font-bold mb-6">Hi, I'm <span class="text-purple-400">Mukesh Parmar</span></h1>
-          <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-gray-500">Full Stack Developer</h2>
-          <p class="text-lg mb-8 text-gray-300">I build exceptional digital experiences that are fast, accessible, and visually appealing.</p>
-          <div class="flex flex-wrap gap-4">
-            <a href="#contact" class="btn-primary px-6 py-3 text-white rounded-lg font-medium">Hire Me</a>
-            <a href="#projects" class="btn-outline px-6 py-3 rounded-lg font-medium">My Work</a>
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left fade-in">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
+            Hi, I'm <span class="text-purple-300">Mukesh Parmar</span>
+          </h1>
+          <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-purple-100">
+            Full Stack Developer
+          </h2>
+          <p class="text-lg mb-8 text-purple-100 max-w-md mx-auto md:mx-0">
+            I build exceptional digital experiences that are fast, accessible, and visually appealing.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="#contact" class="btn-primary px-8 py-4 text-white rounded-lg font-medium">
+              Hire Me <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <a href="#projects" class="btn-outline px-8 py-4 rounded-lg font-medium">
+              View My Work <i class="fas fa-briefcase ml-2"></i>
+            </a>
           </div>
         </div>
         <div class="md:w-1/2 flex justify-center fade-in">
-          <img src="logo/pp.jpg" alt="Mukesh Parmar" class="rounded-full h-64 w-64 md:h-80 md:w-80 object-cover border-4 border-white shadow-xl floating">
+          <img src="logo/pp.jpg" 
+               alt="Mukesh Parmar - Full Stack Developer" 
+               class="profile-img rounded-full h-72 w-72 md:h-80 md:w-80 object-cover border-4 border-white shadow-2xl floating"
+               width="320"
+               height="320"
+               loading="eager">
         </div>
       </div>
     </div>
   </section>
 
   <!-- Stats Section -->
-  <section class="py-16 bg-purple-600 text-white">
+  <section class="stats-section py-16 text-white">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="counter-item p-6 fade-in" id="counter-1">
-          <div class="text-4xl font-bold mb-2" id="project-count">0</div>
-          <div class="text-lg">Projects Completed</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="counter-item p-6 fade-in">
+          <div class="text-4xl md:text-5xl font-bold mb-2" id="project-count">0</div>
+          <div class="text-lg md:text-xl">Projects Completed</div>
         </div>
-        <div class="counter-item p-6 fade-in" id="counter-2">
-          <div class="text-4xl font-bold mb-2" id="client-count">0</div>
-          <div class="text-lg">Happy Clients</div>
+        <div class="counter-item p-6 fade-in">
+          <div class="text-4xl md:text-5xl font-bold mb-2" id="client-count">0</div>
+          <div class="text-lg md:text-xl">Happy Clients</div>
         </div>
-        <div class="counter-item p-6 fade-in" id="counter-3">
-          <div class="text-4xl font-bold mb-2" id="code-count">0</div>
-          <div class="text-lg">Lines of Code</div>
+        <div class="counter-item p-6 fade-in">
+          <div class="text-4xl md:text-5xl font-bold mb-2" id="code-count">0</div>
+          <div class="text-lg md:text-xl">Lines of Code</div>
         </div>
-        <div class="counter-item p-6 fade-in" id="counter-4">
-          <div class="text-4xl font-bold mb-2" id="coffee-count">0</div>
-          <div class="text-lg">Cups of Coffee</div>
+        <div class="counter-item p-6 fade-in">
+          <div class="text-4xl md:text-5xl font-bold mb-2" id="coffee-count">0</div>
+          <div class="text-lg md:text-xl">Cups of Coffee</div>
         </div>
       </div>
     </div>
@@ -257,18 +589,38 @@
   <!-- About Preview -->
   <section class="py-16 bg-white" id="about">
     <div class="container mx-auto px-4">
-      <h2 class="section-title text-center text-3xl font-bold mb-12 fade-in">About <span class="text-purple-600">Me</span></h2>
+      <h2 class="section-title text-center text-3xl md:text-4xl font-bold mb-12 fade-in">
+        About <span class="text-purple-600">Me</span>
+      </h2>
       <div class="flex flex-col md:flex-row items-center fade-in">
-        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-          <img src="logo/pp.jpg" alt="Mukesh Parmar" class="rounded-2xl w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg">
+        <div class="md:w-2/5 mb-8 md:mb-0 flex justify-center">
+          <img src="logo/pp.jpg" 
+               alt="Mukesh Parmar - Full Stack Developer from Indore" 
+               class="profile-img rounded-2xl w-72 h-72 md:w-80 md:h-80 object-cover shadow-xl"
+               width="320"
+               height="320"
+               loading="lazy">
         </div>
-        <div class="md:w-2/3 md:pl-12">
-          <p class="mb-4 text-gray-700">I am from <span class="font-medium text-purple-600">Indore, Madhya Pradesh, India.</span></p>
-          <p class="mb-4 text-gray-700">I have completed B.Tech from Prestige Institute Of Engineering Management And Research, Indore.</p>
-          <p class="mb-6 text-gray-700">I'm a passionate software developer specializing in web development and data analysis. My expertise in React Native allows me to build engaging and intuitive user interfaces for mobile applications.</p>
-          <a href="about.html" class="btn-primary inline-flex items-center px-6 py-2 text-white rounded-lg font-medium">
-            Read More <i class="fas fa-arrow-right ml-2"></i>
-          </a>
+        <div class="md:w-3/5 md:pl-12">
+          <p class="mb-4 text-gray-700 text-lg">
+            I am from <span class="font-medium text-purple-600">Indore, Madhya Pradesh, India.</span>
+          </p>
+          <p class="mb-4 text-gray-700 text-lg">
+            I have completed B.Tech from Prestige Institute Of Engineering Management And Research, Indore.
+          </p>
+          <p class="mb-6 text-gray-700 text-lg">
+            I'm a passionate software developer specializing in web development and data analysis. 
+            My expertise in React Native allows me to build engaging and intuitive user interfaces 
+            for mobile applications.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="about.html" class="btn-primary inline-flex items-center px-6 py-3 text-white rounded-lg font-medium">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <a href="MukeshPResume.pdf" download class="btn-outline inline-flex items-center px-6 py-3 rounded-lg font-medium">
+              Download CV <i class="fas fa-download ml-2"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -277,35 +629,57 @@
   <!-- Services Preview -->
   <section class="py-16 bg-gray-50" id="services">
     <div class="container mx-auto px-4">
-      <h2 class="section-title text-center text-3xl font-bold mb-12 fade-in">My <span class="text-purple-600">Services</span></h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="service-card bg-white p-8 rounded-xl shadow-md fade-in">
-          <div class="service-icon text-purple-600 mb-4 text-4xl">
+      <h2 class="section-title text-center text-3xl md:text-4xl font-bold mb-12 fade-in">
+        My <span class="text-purple-600">Services</span>
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card p-8 rounded-xl fade-in">
+          <div class="service-icon text-5xl mb-6 flex justify-center">
             <i class="fas fa-code"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Web Development</h3>
-          <p class="text-gray-600 mb-4">Custom websites and web applications built with modern technologies for optimal performance.</p>
-          <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800">Learn More →</a>
+          <h3 class="text-xl font-bold mb-4 text-center">Web Development</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Custom websites and web applications built with modern technologies for optimal performance.
+          </p>
+          <div class="text-center">
+            <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
         </div>
-        <div class="service-card bg-white p-8 rounded-xl shadow-md fade-in">
-          <div class="service-icon text-purple-600 mb-4 text-4xl">
+        
+        <div class="service-card p-8 rounded-xl fade-in">
+          <div class="service-icon text-5xl mb-6 flex justify-center">
             <i class="fas fa-paint-brush"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Web Design</h3>
-          <p class="text-gray-600 mb-4">Elevating your brand with modern, intuitive designs that captivate your audience and enhance user engagement..</p>
-          <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800">Learn More →</a>
+          <h3 class="text-xl font-bold mb-4 text-center">Web Design</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Elevating your brand with modern, intuitive designs that captivate your audience.
+          </p>
+          <div class="text-center">
+            <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
         </div>
-        <div class="service-card bg-white p-8 rounded-xl shadow-md fade-in">
-          <div class="service-icon text-purple-600 mb-4 text-4xl">
+        
+        <div class="service-card p-8 rounded-xl fade-in">
+          <div class="service-icon text-5xl mb-6 flex justify-center">
             <i class="fas fa-chart-line"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Data Analysis</h3>
-          <p class="text-gray-600 mb-4">Transform your data into actionable insights with powerful analytics and visualization.</p>
-          <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800">Learn More →</a>
+          <h3 class="text-xl font-bold mb-4 text-center">Data Analysis</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Transform your data into actionable insights with powerful analytics and visualization.
+          </p>
+          <div class="text-center">
+            <a href="services.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
         </div>
       </div>
       <div class="text-center mt-12 fade-in">
-        <a href="services.html" class="btn-primary px-6 py-3 text-white rounded-lg font-medium inline-flex items-center">
+        <a href="services.html" class="btn-primary px-8 py-3 text-white rounded-lg font-medium inline-flex items-center">
           View All Services <i class="fas fa-arrow-right ml-2"></i>
         </a>
       </div>
@@ -315,41 +689,66 @@
   <!-- Projects Preview -->
   <section class="py-16 bg-white" id="projects">
     <div class="container mx-auto px-4">
-      <h2 class="section-title text-center text-3xl font-bold mb-12 fade-in">Featured <span class="text-purple-600">Projects</span></h2>
+      <h2 class="section-title text-center text-3xl md:text-4xl font-bold mb-12 fade-in">
+        Featured <span class="text-purple-600">Projects</span>
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden fade-in">
+        <div class="project-card rounded-xl overflow-hidden fade-in">
           <div class="overflow-hidden h-64">
-            <img src="https://storage.googleapis.com/a1aa/image/fbA6jT9rC4bNE4q1i5Lq7ZPDLfuo-8tBaVzleu8xtsc.jpg" alt="Text to Image Comparator" class="w-full h-full object-cover">
+            <img src="https://storage.googleapis.com/a1aa/image/fbA6jT9rC4bNE4q1i5Lq7ZPDLfuo-8tBaVzleu8xtsc.jpg" 
+                 alt="Text to Image Comparator project by Mukesh Parmar" 
+                 class="w-full h-full object-cover project-image"
+                 loading="lazy">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold mb-3">Text to Image Comparator</h3>
-            <p class="text-gray-600 mb-4">A React.js interface comparing text-to-image APIs like OpenAI and OpenJourney.</p>
-            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800">View Project →</a>
+            <p class="text-gray-600 mb-4">
+              A React.js interface comparing text-to-image APIs like OpenAI and OpenJourney.
+            </p>
+            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
-        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden fade-in">
+        
+        <div class="project-card rounded-xl overflow-hidden fade-in">
           <div class="overflow-hidden h-64">
-            <img src="logo/skillF.jpg" alt="Skill Factory" class="w-full h-full object-cover">
+            <img src="logo/skillF.jpg" 
+                 alt="Skill Factory project by Mukesh Parmar" 
+                 class="w-full h-full object-cover project-image"
+                 loading="lazy">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold mb-3">Skill Factory</h3>
-            <p class="text-gray-600 mb-4">Platform connecting skilled professionals with clients, built with HTML, CSS, JavaScript.</p>
-            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800">View Project →</a>
+            <p class="text-gray-600 mb-4">
+              Platform connecting skilled professionals with clients, built with HTML, CSS, JavaScript.
+            </p>
+            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
-        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden fade-in">
+        
+        <div class="project-card rounded-xl overflow-hidden fade-in">
           <div class="overflow-hidden h-64">
-            <img src="logo/face11.jpg" alt="Face Recognition System" class="w-full h-full object-cover">
+            <img src="logo/face11.jpg" 
+                 alt="Face Recognition System project by Mukesh Parmar" 
+                 class="w-full h-full object-cover project-image"
+                 loading="lazy">
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold mb-3">Face Recognition System</h3>
-            <p class="text-gray-600 mb-4">Automated attendance tracking using facial recognition technology.</p>
-            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800">View Project →</a>
+            <p class="text-gray-600 mb-4">
+              Automated attendance tracking using facial recognition technology.
+            </p>
+            <a href="projects.html" class="text-purple-600 font-medium hover:text-purple-800 inline-flex items-center">
+              View Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
       </div>
       <div class="text-center mt-12 fade-in">
-        <a href="projects.html" class="btn-primary px-6 py-3 text-white rounded-lg font-medium inline-flex items-center">
+        <a href="projects.html" class="btn-primary px-8 py-3 text-white rounded-lg font-medium inline-flex items-center">
           View All Projects <i class="fas fa-arrow-right ml-2"></i>
         </a>
       </div>
@@ -357,55 +756,125 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-purple-600 text-white" id="contact">
+  <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white" id="contact">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6 fade-in">Ready to Start Your Project?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">Let's work together to create something amazing. Get in touch today!</p>
-      <a href="contact.html" class="inline-block px-8 py-3 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition duration-300 fade-in">
-        Contact Me
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">Ready to Start Your Project?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">
+        Let's work together to create something amazing. Get in touch today!
+      </p>
+      <a href="contact.html" class="inline-block px-8 py-4 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition duration-300 fade-in shadow-lg">
+        Contact Me <i class="fas fa-paper-plane ml-2"></i>
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <div class="flex items-center">
-            <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-12 w-12 border-2 border-purple-500" src="logo/pp.jpg"/>
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start">
+            <img alt="Mukesh Parmar - Full Stack Developer" 
+                 class="rounded-full h-14 w-14 border-2 border-purple-500" 
+                 src="logo/pp.jpg"
+                 width="56"
+                 height="56"
+                 loading="lazy">
             <div class="ml-4">
               <h3 class="text-xl font-bold">Mukesh Parmar</h3>
               <p class="text-gray-400">Full Stack Developer</p>
             </div>
           </div>
+          <p class="mt-4 text-gray-400 max-w-md">
+            Creating digital experiences that make a difference.
+          </p>
         </div>
-        <div class="flex space-x-6">
-          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
-          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
-          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
-          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
+        
+        <div class="mb-8 md:mb-0">
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Quick Links</h4>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+            <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
+            <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+            <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Connect With Me</h4>
+          <div class="flex space-x-4 justify-center md:justify-start">
+            <a href="https://linkedin.com/in/mukesh-parmar-986517258/" 
+               class="social-link text-white hover:text-white"
+               aria-label="LinkedIn profile">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+            <a href="https://github.com/Mukeshparmar04" 
+               class="social-link text-white hover:text-white"
+               aria-label="GitHub profile">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://www.codechef.com/users/pr0863cs201093" 
+               class="social-link text-white hover:text-white"
+               aria-label="CodeChef profile">
+              <i class="fas fa-code text-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/mukesh_p04/" 
+               class="social-link text-white hover:text-white"
+               aria-label="Instagram profile">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
         <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <p class="mt-2 text-sm">Designed and developed with ❤️ by Mukesh Parmar</p>
       </div>
     </div>
   </footer>
 
   <!-- Scroll to Top Button -->
-  <div class="scroll-top" id="scroll-top">
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <script>
-    // Mobile menu toggle
+    // Page loading progress
+    window.addEventListener('load', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBar.style.opacity = '0';
+        setTimeout(() => loadingBar.remove(), 300);
+      }, 500);
+    });
+
+    // Mobile menu toggle with accessibility improvements
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
       mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('block');
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      // Update icon
+      const icon = navToggle.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !mobileMenu.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+      }
     });
 
     // Scroll to top button
@@ -426,14 +895,14 @@
       });
     });
 
-    // Counter animation
+    // Counter animation with improved performance
     function animateValue(id, start, end, duration) {
       const obj = document.getElementById(id);
       let startTimestamp = null;
       const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        obj.textContent = Math.floor(progress * (end - start) + start).toLocaleString();
         if (progress < 1) {
           window.requestAnimationFrame(step);
         }
@@ -452,33 +921,32 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.5});
+    }, { threshold: 0.5 });
 
-    const statsSection = document.querySelector('section.py-16.bg-purple-600');
+    const statsSection = document.querySelector('.stats-section');
     if (statsSection) {
       observer.observe(statsSection);
     }
 
-    // Add fade-in animation to elements when they come into view
+    // Enhanced fade-in animation with Intersection Observer
     const fadeElements = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
           fadeObserver.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.1});
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
 
     fadeElements.forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       fadeObserver.observe(el);
     });
 
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links with offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -488,12 +956,47 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: offsetPosition,
             behavior: 'smooth'
           });
         }
       });
+    });
+
+    // Add subtle parallax effect to hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero-section');
+      if (hero) {
+        hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+      }
+    });
+
+    // Keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+      // Escape key closes mobile menu
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        navToggle.focus();
+      }
+    });
+
+    // Preload critical images
+    function preloadImage(url) {
+      const img = new Image();
+      img.src = url;
+    }
+
+    // Preload hero image
+    window.addEventListener('load', () => {
+      preloadImage('logo/pp.jpg');
     });
   </script>
 </body>

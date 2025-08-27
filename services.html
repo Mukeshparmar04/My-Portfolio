@@ -3,19 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Mukesh Parmar Portfolio</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta name="description" content="Professional services offered by Mukesh Parmar - Full Stack Developer specializing in web development, design, and data solutions.">
+  <meta name="keywords" content="Web Development, Web Design, Data Analysis, Database Management, Full Stack Developer, Services, Mukesh Parmar">
+  <meta name="author" content="Mukesh Parmar">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mukeshparmar.com/services.html">
+  <meta property="og:title" content="Services | Mukesh Parmar - Full Stack Developer">
+  <meta property="og:description" content="Professional services offered by Mukesh Parmar - Full Stack Developer specializing in web development, design, and data solutions.">
+  <meta property="og:image" content="https://mukeshparmar.com/logo/pp.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mukeshparmar.com/services.html">
+  <meta property="twitter:title" content="Services | Mukesh Parmar - Full Stack Developer">
+  <meta property="twitter:description" content="Professional services offered by Mukesh Parmar - Full Stack Developer specializing in web development, design, and data solutions.">
+  <meta property="twitter:image" content="https://mukeshparmar.com/logo/pp.jpg" rounded="circle">
+  
+  <title>Services | Mukesh Parmar - Full Stack Developer</title>
+  <link rel="icon" type="image/x-icon" href="logo/pp.jpg">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     :root {
       --primary: #7c3aed;
       --primary-light: #8b5cf6;
       --primary-dark: #6d28d9;
+      --secondary: #06d6a0;
+      --accent: #f59e0b;
       --dark: #1e293b;
       --light: #f8fafc;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     body {
@@ -24,10 +55,74 @@
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
+      background: var(--light);
     }
     
     main {
       flex: 1;
+    }
+
+    /* .rounded-full {
+      border-radius: 50%;
+      width: 13px;
+      height: 15px;
+    } */
+    
+    /* Enhanced Navigation */
+    .nav-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile Menu Improvements */
+    #mobile-menu {
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 8rem 0;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(139, 92, 246, 0.8)), url('logo/bg12.avif') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      isolation: isolate;
+      overflow: hidden;
     }
     
     .hero-section::before {
@@ -37,64 +132,267 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
     
-    .nav-link {
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Service Cards */
+    .service-card {
+      transition: var(--transition);
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      height: 100%;
       position: relative;
     }
     
-    .nav-link::after {
+    .service-card::before {
       content: '';
       position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
+      top: 0;
       left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
     
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    
-    .service-card {
-      transition: all 0.3s ease;
-      perspective: 1000px;
+    .service-card:hover::before {
+      transform: scaleX(1);
     }
     
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
     }
     
     .service-icon {
-      transition: all 0.3s ease;
+      transition: var(--transition);
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin-bottom: 1.5rem;
     }
     
     .service-card:hover .service-icon {
-      transform: scale(1.1);
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .service-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      transition: var(--transition);
+    }
+    
+    .service-features li:hover {
+      transform: translateX(5px);
+    }
+    
+    .service-features li i {
       color: var(--primary);
+      margin-right: 0.75rem;
+      font-size: 0.875rem;
     }
     
+    /* Pricing Badge */
+    .pricing-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      z-index: 2;
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transition: var(--transition);
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 12px 28px;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      transition: var(--transition);
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 12px 28px;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    }
+    
+    /* Process Section */
+    .process-section {
+      background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .process-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237c3aed' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    .process-step {
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
+    }
+    
+    .process-step:hover {
+      transform: translateY(-5px);
+    }
+    
+    .process-number {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+      transition: var(--transition);
+    }
+    
+    .process-step:hover .process-number {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    /* Section Styles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 5px;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+    
+    .section-title:hover::after {
+      width: 120px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(360deg); }
+    }
+    
+    /* Animation Classes */
     .fade-in {
-      animation: fadeIn 1s ease-in;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
+    /* Scroll to Top Button */
     .scroll-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border-radius: 50%;
       display: flex;
@@ -102,274 +400,544 @@
       justify-content: center;
       cursor: pointer;
       opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 99;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
     }
     
     .scroll-top.active {
       opacity: 1;
+      visibility: visible;
     }
     
     .scroll-top:hover {
-      background-color: var(--primary-dark);
-      transform: scale(1.1);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
-    .section-title {
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #0f172a);
       position: relative;
-      display: inline-block;
+      overflow: hidden;
     }
     
-    .section-title::after {
+    footer::before {
       content: '';
       position: absolute;
-      width: 50%;
-      height: 4px;
-      bottom: -10px;
-      left: 25%;
-      background: linear-gradient(90deg, var(--primary), transparent);
-      border-radius: 3px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+    
+    .social-link {
+      transition: var(--transition);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        background-attachment: scroll;
+        text-align: center;
+        padding: 6rem 0;
+      }
+      
+      .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .process-step {
+        margin-bottom: 2rem;
+      }
+      
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .process-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Reduced motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+    
+    /* Loading animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 9999;
+      transition: width 0.4s ease;
     }
   </style>
 </head>
-<body class="bg-gray-50">
+<body>
+  <!-- Loading Bar -->
+  <div class="loading-bar" id="loading-bar"></div>
+
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <nav class="shadow-sm">
+  <header class="sticky top-0 z-50 nav-container">
+    <nav>
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a class="flex items-center" href="index.html">
-          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
-          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        <a class="flex items-center" href="index.html" aria-label="Home">
+          <img alt="Mukesh Parmar - Full Stack Developer" 
+               class="rounded-full h-12 w-12 border-2 border-purple-500" 
+               src="logo/pp.jpg" 
+               width="48" 
+               height="48"
+               loading="eager">
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            Mukesh Parmar
+          </div>
         </a>
         
-        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+        <button class="text-gray-700 md:hidden block focus:outline-none" 
+                id="nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
           <i class="fas fa-bars text-xl"></i>
         </button>
         
         <div class="hidden md:flex space-x-8" id="nav-content">
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" href="services.html">Services</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" 
+             href="services.html"
+             aria-current="page">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="contact.html">Contact</a>
         </div>
       </div>
       
       <!-- Mobile Menu -->
-      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
-        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" href="services.html">Services</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
+      <div class="md:hidden hidden bg-white shadow-xl" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" 
+             href="services.html"
+             aria-current="page">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="contact.html">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section py-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
-    <div class="container mx-auto px-4 relative z-10 flex items-center justify-center min-h-[30vh]">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 fade-in">My Services</h1>
-        <p class="text-xl text-white opacity-90 max-w-2xl mx-auto fade-in">I offer comprehensive solutions to bring your digital vision to life</p>
+  <section class="hero-section">
+    <div class="container mx-auto px-4 hero-content">
+      <div class="text-center max-w-3xl mx-auto fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
+          My <span class="text-yellow-300">Services</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-purple-100 mb-8 opacity-90">
+          Comprehensive solutions to bring your digital vision to life with cutting-edge technology and creative expertise.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#services" class="btn-primary px-6 py-3 text-white rounded-lg font-medium">
+            Explore Services <i class="fas fa-arrow-down ml-2"></i>
+          </a>
+          <a href="contact.html" class="btn-outline px-6 py-3 rounded-lg font-medium border-white text-white hover:border-white">
+            Get Started <i class="fas fa-rocket ml-2"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-white" id="services">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">What I <span class="text-purple-600">Offer</span></h2>
+      <h2 class="section-title text-center text-3xl md:text-4xl font-bold mb-4 fade-in">
+        What I <span class="text-purple-600">Offer</span>
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto fade-in">
+        From concept to deployment, I provide end-to-end solutions tailored to your specific needs and business goals.
+      </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
         <!-- Web Development -->
-        <div class="service-card p-8 bg-white rounded-xl shadow-lg border border-gray-100 fade-in">
-          <div class="service-icon text-5xl text-purple-600 mb-6 flex justify-center">
+        <div class="service-card p-8 fade-in">
+          <!-- <div class="pricing-badge">Starting at $499</div> -->
+          <div class="service-icon text-6xl mb-6 flex justify-center">
             <i class="fas fa-code"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-center">Web Development</h3>
-          <p class="text-gray-600 mb-6 text-center">Building responsive, modern websites with cutting-edge technologies for optimal performance and user experience.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+          <h3 class="text-2xl font-bold mb-4 text-center">Web Development</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Building responsive, modern websites with cutting-edge technologies for optimal performance and user experience.
+          </p>
+          <ul class="service-features mb-8">
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Custom website development</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>E-commerce solutions</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Web application development</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>API integration & development</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Performance optimization</span>
             </li>
           </ul>
           <div class="text-center">
-            <a href="contact.html" class="inline-block px-6 py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition">Get Started</a>
+            <a href="contact.html" class="btn-primary w-full py-3 text-white rounded-lg font-medium">
+              Start Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
 
         <!-- Web Design -->
-        <div class="service-card p-8 bg-white rounded-xl shadow-lg border border-gray-100 fade-in">
-          <div class="service-icon text-5xl text-purple-600 mb-6 flex justify-center">
+        <div class="service-card p-8 fade-in">
+          <!-- <div class="pricing-badge">Starting at $399</div> -->
+          <div class="service-icon text-6xl mb-6 flex justify-center">
             <i class="fas fa-paint-brush"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-center">Web Design</h3>
-          <p class="text-gray-600 mb-6 text-center">Elevating your brand with modern, intuitive designs that captivate your audience and enhance user engagement.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+          <h3 class="text-2xl font-bold mb-4 text-center">Web Design</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Elevating your brand with modern, intuitive designs that captivate your audience and enhance user engagement.
+          </p>
+          <ul class="service-features mb-8">
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>UI/UX design</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Responsive design</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-              <span>Brand identity</span>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Brand identity design</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>User experience optimization</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Design system creation</span>
             </li>
           </ul>
           <div class="text-center">
-            <a href="contact.html" class="inline-block px-6 py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition">Get Started</a>
+            <a href="contact.html" class="btn-primary w-full py-3 text-white rounded-lg font-medium">
+              Start Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
 
         <!-- Database Management -->
-        <div class="service-card p-8 bg-white rounded-xl shadow-lg border border-gray-100 fade-in">
-          <div class="service-icon text-5xl text-purple-600 mb-6 flex justify-center">
+        <div class="service-card p-8 fade-in">
+          <!-- <div class="pricing-badge">Starting at $349</div> -->
+          <div class="service-icon text-6xl mb-6 flex justify-center">
             <i class="fas fa-database"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-center">Database Management</h3>
-          <p class="text-gray-600 mb-6 text-center">Efficient data storage and retrieval solutions tailored to your business needs and scalability requirements.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-              <span>Database design</span>
+          <h3 class="text-2xl font-bold mb-4 text-center">Database Management</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Efficient data storage and retrieval solutions tailored to your business needs and scalability requirements.
+          </p>
+          <ul class="service-features mb-8">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Database design & architecture</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Performance optimization</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-              <span>Data migration</span>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Data migration services</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Backup & recovery solutions</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Security implementation</span>
             </li>
           </ul>
           <div class="text-center">
-            <a href="contact.html" class="inline-block px-6 py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition">Get Started</a>
+            <a href="contact.html" class="btn-primary w-full py-3 text-white rounded-lg font-medium">
+              Start Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
 
         <!-- Data Visualization -->
-        <div class="service-card p-8 bg-white rounded-xl shadow-lg border border-gray-100 fade-in">
-          <div class="service-icon text-5xl text-purple-600 mb-6 flex justify-center">
+        <div class="service-card p-8 fade-in">
+          <!-- <div class="pricing-badge">Starting at $299</div> -->
+          <div class="service-icon text-6xl mb-6 flex justify-center">
             <i class="fas fa-chart-line"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-center">Data Visualization</h3>
-          <p class="text-gray-600 mb-6 text-center">Unlocking data's potential through powerful visualization and transformation techniques.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+          <h3 class="text-2xl font-bold mb-4 text-center">Data Analysis & Visualization</h3>
+          <p class="text-gray-600 mb-6 text-center">
+            Unlocking data's potential through powerful visualization and transformation techniques for actionable insights.
+          </p>
+          <ul class="service-features mb-8">
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Interactive dashboards</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-              <span>Business intelligence</span>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Business intelligence reports</span>
             </li>
-            <li class="flex items-center">
-              <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+            <li>
+              <i class="fas fa-check-circle"></i>
               <span>Data storytelling</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Predictive analytics</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Custom data solutions</span>
             </li>
           </ul>
           <div class="text-center">
-            <a href="contact.html" class="inline-block px-6 py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition">Get Started</a>
+            <a href="contact.html" class="btn-primary w-full py-3 text-white rounded-lg font-medium">
+              Start Project <i class="fas fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
-
-        <!-- Additional services can be added here following the same pattern -->
       </div>
     </div>
   </section>
 
   <!-- Process Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 process-section">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">My <span class="text-purple-600">Process</span></h2>
+      <h2 class="section-title text-center text-3xl md:text-4xl font-bold mb-4 fade-in">
+        My <span class="text-purple-600">Process</span>
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto fade-in">
+        A structured approach to ensure your project's success from initial concept to final deployment.
+      </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="text-center fade-in">
-          <div class="bg-purple-100 text-purple-600 h-16 w-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-          <h3 class="text-xl font-bold mb-2">Discovery</h3>
-          <p class="text-gray-600">Understanding your goals and requirements</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="process-step text-center fade-in">
+          <div class="process-number">1</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Discovery</h3>
+          <p class="text-gray-600">Understanding your goals, requirements, and target audience through detailed consultation.</p>
         </div>
         
-        <div class="text-center fade-in">
-          <div class="bg-purple-100 text-purple-600 h-16 w-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-          <h3 class="text-xl font-bold mb-2">Planning</h3>
-          <p class="text-gray-600">Creating a roadmap for your project</p>
+        <div class="process-step text-center fade-in">
+          <div class="process-number">2</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Planning</h3>
+          <p class="text-gray-600">Creating a comprehensive roadmap with timelines, milestones, and technology stack selection.</p>
         </div>
         
-        <div class="text-center fade-in">
-          <div class="bg-purple-100 text-purple-600 h-16 w-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-          <h3 class="text-xl font-bold mb-2">Development</h3>
-          <p class="text-gray-600">Building your solution with care</p>
+        <div class="process-step text-center fade-in">
+          <div class="process-number">3</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Development</h3>
+          <p class="text-gray-600">Building your solution with clean, maintainable code and regular progress updates.</p>
         </div>
         
-        <div class="text-center fade-in">
-          <div class="bg-purple-100 text-purple-600 h-16 w-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-          <h3 class="text-xl font-bold mb-2">Delivery</h3>
-          <p class="text-gray-600">Launching and supporting your product</p>
+        <div class="process-step text-center fade-in">
+          <div class="process-number">4</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Delivery</h3>
+          <p class="text-gray-600">Launching your product and providing ongoing support and maintenance services.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-purple-600 text-white">
+  <section class="py-16 cta-section text-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6 fade-in">Ready to Transform Your Ideas?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">Let's discuss how I can help bring your vision to life with custom solutions.</p>
-      <a href="contact.html" class="inline-block px-8 py-3 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition duration-300 fade-in">
-        Get in Touch
-      </a>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">Ready to Transform Your Ideas?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in opacity-90">
+        Let's discuss how I can help bring your vision to life with custom solutions tailored to your specific needs.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center fade-in">
+        <a href="contact.html" class="btn-primary px-8 py-4 text-white rounded-lg font-bold">
+          Get Free Consultation <i class="fas fa-calendar-check ml-2"></i>
+        </a>
+        <a href="projects.html" class="btn-outline px-8 py-4 rounded-lg font-bold border-white text-white hover:border-white">
+          View My Work <i class="fas fa-eye ml-2"></i>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start">
+            <img alt="Mukesh Parmar - Full Stack Developer" 
+                 class="rounded-full h-14 w-14 border-2 border-purple-500" 
+                 src="logo/pp.jpg"
+                 width="56"
+                 height="56"
+                 loading="lazy">
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">Mukesh Parmar</h3>
+              <p class="text-gray-400">Full Stack Developer</p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-400 max-w-md">
+            Creating digital experiences that make a difference.
+          </p>
         </div>
-        <div class="flex space-x-6">
-          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
-          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
-          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
-          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter text-xl"></i></a>
+        
+        <div class="mb-8 md:mb-0">
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Quick Links</h4>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+            <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
+            <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+            <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+          </div>
         </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Connect With Me</h4>
+          <div class="flex space-x-4 justify-center md:justify-start">
+            <a href="https://linkedin.com/in/mukesh-parmar-986517258/" 
+               class="social-link text-white hover:text-white"
+               aria-label="LinkedIn profile">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+            <a href="https://github.com/Mukeshparmar04" 
+               class="social-link text-white hover:text-white"
+               aria-label="GitHub profile">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://www.codechef.com/users/pr0863cs201093" 
+               class="social-link text-white hover:text-white"
+               aria-label="CodeChef profile">
+              <i class="fas fa-code text-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/mukesh_p04/" 
+               class="social-link text-white hover:text-white"
+               aria-label="Instagram profile">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <p class="mt-2 text-sm">Designed and developed with ❤️ by Mukesh Parmar</p>
       </div>
     </div>
   </footer>
 
   <!-- Scroll to Top Button -->
-  <div class="scroll-top" id="scroll-top">
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <script>
-    // Mobile menu toggle
+    // Page loading progress
+    window.addEventListener('load', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBar.style.opacity = '0';
+        setTimeout(() => loadingBar.remove(), 300);
+      }, 500);
+    });
+
+    // Mobile menu toggle with accessibility improvements
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
       mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('block');
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      // Update icon
+      const icon = navToggle.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !mobileMenu.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+      }
     });
 
     // Scroll to top button
@@ -390,26 +958,25 @@
       });
     });
 
-    // Add fade-in animation to elements when they come into view
+    // Enhanced fade-in animation with Intersection Observer
     const fadeElements = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
           fadeObserver.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.1});
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
 
     fadeElements.forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       fadeObserver.observe(el);
     });
 
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links with offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -419,11 +986,38 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: offsetPosition,
             behavior: 'smooth'
           });
         }
+      });
+    });
+
+    // Keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+      // Escape key closes mobile menu
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        navToggle.focus();
+      }
+    });
+
+    // Add hover effect to service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
       });
     });
   </script>

@@ -3,19 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume | Mukesh Parmar Portfolio</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta name="description" content="Professional resume of Mukesh Parmar - Full Stack Developer with experience in web development, React, and data analysis.">
+  <meta name="keywords" content="Mukesh Parmar, Resume, CV, Full Stack Developer, Web Developer, React Developer, Portfolio">
+  <meta name="author" content="Mukesh Parmar">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mukeshparmar.com/resume.html">
+  <meta property="og:title" content="Resume | Mukesh Parmar - Full Stack Developer">
+  <meta property="og:description" content="Professional resume of Mukesh Parmar - Full Stack Developer with experience in web development, React, and data analysis.">
+  <meta property="og:image" content="https://mukeshparmar.com/logo/pp.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mukeshparmar.com/resume.html">
+  <meta property="twitter:title" content="Resume | Mukesh Parmar - Full Stack Developer">
+  <meta property="twitter:description" content="Professional resume of Mukesh Parmar - Full Stack Developer with experience in web development, React, and data analysis.">
+  <meta property="twitter:image" content="https://mukeshparmar.com/logo/pp.jpg">
+  
+  <title>Resume | Mukesh Parmar - Full Stack Developer</title>
+  <link rel="icon" type="image/x-icon" href="logo/pp.jpg">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     :root {
       --primary: #7c3aed;
       --primary-light: #8b5cf6;
       --primary-dark: #6d28d9;
+      --secondary: #06d6a0;
+      --accent: #f59e0b;
       --dark: #1e293b;
       --light: #f8fafc;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     body {
@@ -24,10 +55,68 @@
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
+      background: var(--light);
     }
     
     main {
       flex: 1;
+    }
+    
+    /* Enhanced Navigation */
+    .nav-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile Menu Improvements */
+    #mobile-menu {
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 8rem 0;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(139, 92, 246, 0.8)), url('logo/bg12.avif') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      isolation: isolate;
+      overflow: hidden;
     }
     
     .hero-section::before {
@@ -37,66 +126,267 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
     
-    .nav-link {
+    .hero-content {
       position: relative;
+      z-index: 2;
     }
     
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    
+    /* Resume Container */
     .resume-container {
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.1);
     }
     
     .resume-container:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
     }
     
+    /* PDF Container */
+    .pdf-container {
+      min-height: 80vh;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    
+    /* Button Styles */
     .btn-download {
-      background-color: var(--primary);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transition: var(--transition);
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 12px 28px;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-download::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-download:hover::before {
+      left: 100%;
     }
     
     .btn-download:hover {
-      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+    
+    /* Section Styles */
+    .section-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      transition: var(--transition);
+    }
+    
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(124, 58, 237, 0.12);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-light), var(--primary-dark));
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 2rem;
+    }
+    
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 0.5rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary-light);
+      z-index: 2;
+    }
+    
+    .timeline-content {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+    
+    .timeline-content:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
+    }
+    
+    .timeline-date {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Skills Styles */
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-category:last-child {
+      margin-bottom: 0;
+    }
+    
+    .skill-category-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+    }
+    
+    .skill-tag:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
     }
     
+    /* Progress Bars */
+    .skill-bar {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0.5rem 0 1rem;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 4px;
+      transition: width 1.5s ease-in-out;
+      position: relative;
+    }
+    
+    .skill-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Animation Classes */
     .fade-in {
-      animation: fadeIn 1s ease-in;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
+    /* Scroll to Top Button */
     .scroll-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border-radius: 50%;
       display: flex;
@@ -104,140 +394,251 @@
       justify-content: center;
       cursor: pointer;
       opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 99;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
     }
     
     .scroll-top.active {
       opacity: 1;
+      visibility: visible;
     }
     
     .scroll-top:hover {
-      background-color: var(--primary-dark);
-      transform: scale(1.1);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
-    .section-title {
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       position: relative;
-      display: inline-block;
+      overflow: hidden;
     }
     
-    .section-title::after {
+    .cta-section::before {
       content: '';
       position: absolute;
-      width: 50%;
-      height: 4px;
-      bottom: -10px;
-      left: 25%;
-      background: linear-gradient(90deg, var(--primary), transparent);
-      border-radius: 3px;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
     }
     
-    .pdf-container {
-      min-height: 80vh;
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(360deg); }
     }
     
-    .timeline-item {
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #0f172a);
       position: relative;
-      padding-left: 2rem;
-      margin-bottom: 2rem;
+      overflow: hidden;
     }
     
-    .timeline-item::before {
+    footer::before {
       content: '';
       position: absolute;
+      top: 0;
       left: 0;
-      top: 0.5rem;
-      width: 1rem;
-      height: 1rem;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+    
+    .social-link {
+      transition: var(--transition);
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      background-color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      left: 0.45rem;
-      top: 1.5rem;
-      width: 2px;
-      height: calc(100% - 1rem);
-      background-color: var(--primary-light);
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
     }
     
-    .timeline-item:last-child::after {
-      display: none;
-    }
-    
+    /* Responsive Design */
     @media (max-width: 768px) {
+      .hero-section {
+        background-attachment: scroll;
+        text-align: center;
+        padding: 6rem 0;
+      }
+      
       .pdf-container {
         min-height: 60vh;
       }
+      
+      .timeline {
+        padding-left: 1.5rem;
+      }
+      
+      .timeline-item {
+        padding-left: 1.5rem;
+      }
+      
+      .timeline-item::before {
+        left: -1.9rem;
+      }
+      
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn-download {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .section-card {
+        padding: 1.5rem;
+      }
+    }
+    
+    /* Reduced motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+    
+    /* Loading animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 9999;
+      transition: width 0.4s ease;
     }
   </style>
 </head>
-<body class="bg-gray-50">
+<body>
+  <!-- Loading Bar -->
+  <div class="loading-bar" id="loading-bar"></div>
+
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <nav class="shadow-sm">
+  <header class="sticky top-0 z-50 nav-container">
+    <nav>
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a class="flex items-center" href="index.html">
-          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
-          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        <a class="flex items-center" href="index.html" aria-label="Home">
+          <img alt="Mukesh Parmar - Full Stack Developer" 
+               class="rounded-full h-12 w-12 border-2 border-purple-500" 
+               src="logo/pp.jpg" 
+               width="48" 
+               height="48"
+               loading="eager">
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            Mukesh Parmar
+          </div>
         </a>
         
-        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+        <button class="text-gray-700 md:hidden block focus:outline-none" 
+                id="nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
           <i class="fas fa-bars text-xl"></i>
         </button>
         
         <div class="hidden md:flex space-x-8" id="nav-content">
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" href="resume.html">Resume</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="contact.html">Contact</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" 
+             href="resume.html"
+             aria-current="page">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="contact.html">Contact</a>
         </div>
       </div>
       
       <!-- Mobile Menu -->
-      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
-        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" href="resume.html">Resume</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="contact.html">Contact</a>
+      <div class="md:hidden hidden bg-white shadow-xl" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" 
+             href="resume.html"
+             aria-current="page">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="contact.html">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section py-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
-    <div class="container mx-auto px-4 relative z-10 flex items-center justify-center min-h-[30vh]">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 fade-in">My Resume</h1>
-        <p class="text-xl text-white opacity-90 max-w-2xl mx-auto fade-in">Professional experience and qualifications at a glance</p>
+  <section class="hero-section">
+    <div class="container mx-auto px-4 hero-content">
+      <div class="text-center max-w-3xl mx-auto fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
+          My <span class="text-yellow-300">Resume</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-purple-100 mb-8 opacity-90">
+          Professional experience, education, and skills at a glance
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#resume-content" class="btn-download px-6 py-3 text-white rounded-lg font-medium">
+            View Resume <i class="fas fa-arrow-down ml-2"></i>
+          </a>
+          <a href="MukeshPResume.pdf" download class="btn-download px-6 py-3 text-white rounded-lg font-medium">
+            Download PDF <i class="fas fa-download ml-2"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Resume Section -->
-  <section class="py-16 bg-white">
+  <!-- Resume Content Section -->
+  <section class="py-16 bg-gray-50" id="resume-content">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto fade-in">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h2 class="text-3xl font-bold text-gray-800">Mukesh Parmar</h2>
-          <a href="MukeshPResume.pdf" download class="btn-download px-6 py-3 text-white rounded-lg font-medium inline-flex items-center mt-4 md:mt-0">
-            <i class="fas fa-download mr-2"></i> Download Resume
-          </a>
-        </div>
-        
-        <div class="resume-container bg-gray-50 rounded-xl p-2 mb-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- PDF Preview -->
+        <div class="resume-container mb-12 fade-in">
           <div class="pdf-container">
-            <object data="MukeshPResume.pdf" type="application/pdf" width="100%" style="height: 80vh;" class="rounded-lg">
+            <object data="MukeshPResume.pdf" type="application/pdf" width="100%" style="height: 80vh;" class="rounded-lg" aria-label="Mukesh Parmar Resume PDF">
               <div class="bg-gray-100 rounded-lg p-8 text-center">
+                <i class="fas fa-file-pdf text-6xl text-purple-600 mb-4"></i>
                 <p class="text-lg text-gray-700 mb-4">Your browser does not support PDF preview.</p>
                 <a href="MukeshPResume.pdf" download class="btn-download px-6 py-3 text-white rounded-lg font-medium inline-flex items-center">
                   <i class="fas fa-download mr-2"></i> Download Resume
@@ -246,82 +647,159 @@
             </object>
           </div>
         </div>
-        
+
         <!-- Education Section -->
-        <div class="bg-gray-50 p-6 rounded-xl mb-8">
-          <h3 class="text-xl font-bold mb-4 text-purple-600 border-b pb-2">Education</h3>
-          <div class="timeline-item">
-            <h4 class="font-semibold text-lg">B.Tech in Computer Science & Engineering</h4>
-            <p class="text-gray-600">Prestige Institute Of Engineering Management & Research</p>
-            <p class="text-sm text-gray-500">CGPA: 7.60/10 | 2020 - 2024</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-semibold text-lg">12th Grade</h4>
-            <p class="text-gray-600">Jawahar Navodaya Vidyalaya, Rajgarh</p>
-            <p class="text-sm text-gray-500">Percentage: 71/100 | 2019 - 2020</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-semibold text-lg">10th Grade</h4>
-            <p class="text-gray-600">Jawahar Navodaya Vidyalaya, Rajgarh</p>
-            <p class="text-sm text-gray-500">Percentage: 73/100 | 2017 - 2018</p>
+        <div class="section-card fade-in">
+          <h2 class="section-title text-2xl">Education</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <span class="timeline-date">2020 - 2024</span>
+                <h3 class="font-semibold text-lg text-gray-800">B.Tech in Computer Science & Engineering</h3>
+                <p class="text-gray-600 mb-2">Prestige Institute Of Engineering Management & Research, Indore</p>
+                <p class="text-sm text-gray-500"><strong>CGPA:</strong> 7.60/10</p>
+                <div class="mt-3">
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 76%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <span class="timeline-date">2019 - 2020</span>
+                <h3 class="font-semibold text-lg text-gray-800">12th Grade</h3>
+                <p class="text-gray-600 mb-2">Jawahar Navodaya Vidyalaya, Rajgarh</p>
+                <p class="text-sm text-gray-500"><strong>Percentage:</strong> 71/100</p>
+                <div class="mt-3">
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 71%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <span class="timeline-date">2017 - 2018</span>
+                <h3 class="font-semibold text-lg text-gray-800">10th Grade</h3>
+                <p class="text-gray-600 mb-2">Jawahar Navodaya Vidyalaya, Rajgarh</p>
+                <p class="text-sm text-gray-500"><strong>Percentage:</strong> 73/100</p>
+                <div class="mt-3">
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 73%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        
+
         <!-- Experience Section -->
-        <div class="bg-gray-50 p-6 rounded-xl mb-8">
-          <h3 class="text-xl font-bold mb-4 text-purple-600 border-b pb-2">Experience</h3>
-          <div class="timeline-item">
-            <h4 class="font-semibold text-lg">Software Engineer Intern</h4>
-            <p class="text-gray-600">Umbrella Protection Systems Pvt. Ltd., Indore, Madhya Pradesh, India</p>
-            <p class="text-sm text-gray-500">March 2025 - Present</p>
-            <ul class="mt-2 list-disc list-inside text-gray-700 space-y-1">
-              <li>Developed a community website using React and Node.js</li>
-              <li>Contributed to critical projects including 'Tradeboat' (stock market app) and 'NexAid' (vehicle monitoring system)</li>
-            </ul>
+        <div class="section-card fade-in">
+          <h2 class="section-title text-2xl">Work Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <span class="timeline-date">March 2025 - Present</span>
+                <h3 class="font-semibold text-lg text-gray-800">Software Engineer Intern</h3>
+                <p class="text-gray-600 mb-2">Umbrella Protection Systems Pvt. Ltd., Indore, Madhya Pradesh, India</p>
+                <ul class="mt-3 space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-purple-500 mt-1 mr-2"></i>
+                    <span>Developed a community website using React and Node.js</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-purple-500 mt-1 mr-2"></i>
+                    <span>Contributed to critical projects including 'Tradeboat' (stock market app) and 'NexAid' (vehicle monitoring system)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <span class="timeline-date">January 2025 - March 2025</span>
+                <h3 class="font-semibold text-lg text-gray-800">Software Engineer Intern</h3>
+                <p class="text-gray-600 mb-2">Tech FusionEra, Indore, Madhya Pradesh, India</p>
+                <ul class="mt-3 space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-purple-500 mt-1 mr-2"></i>
+                    <span>Developed "HomelyHub" hotel booking website handling both front-end (React) and back-end (Node.js, MongoDB)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h4 class="font-semibold text-lg">Software Engineer Intern</h4>
-            <p class="text-gray-600">Tech FusionEra, Indore, Madhya Pradesh, India</p>
-            <p class="text-sm text-gray-500">January 2025 - March 2025</p>
-            <ul class="mt-2 list-disc list-inside text-gray-700 space-y-1">
-              <li>Developed "HomelyHub" hotel booking website handling both front-end (React) and back-end (Node.js, MongoDB)</li>
-            </ul>
-          </div>
-          
         </div>
-        
+
         <!-- Technical Skills Section -->
-        <div class="bg-gray-50 p-6 rounded-xl">
-          <h3 class="text-xl font-bold mb-4 text-purple-600 border-b pb-2">Technical Skills</h3>
+        <div class="section-card fade-in">
+          <h2 class="section-title text-2xl">Technical Skills</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-semibold mb-2">Languages</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Python</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">C++</span>
+            <!-- Programming Languages -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">Programming Languages</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">JavaScript</span>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold mb-2">Web Technologies</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">HTML5</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">CSS3</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">JavaScript</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">ReactJS</span>
+            
+            <!-- Web Technologies -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">Web Technologies</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">ReactJS</span>
+                <span class="skill-tag">Node.js</span>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold mb-2">Databases/Servers</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">SQL</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">MongoDB</span>
+            
+            <!-- Databases -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">Databases</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">MongoDB</span>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold mb-2">Platforms/Tools</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Git</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Power BI</span>
+            
+            <!-- Tools & Platforms -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">Tools & Platforms</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">Postman</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Skills Section -->
+        <div class="section-card fade-in">
+          <h2 class="section-title text-2xl">Additional Skills</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="skill-category">
+              <h3 class="skill-category-title">Soft Skills</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Team Collaboration</span>
+                <span class="skill-tag">Communication</span>
+                <span class="skill-tag">Time Management</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h3 class="skill-category-title">Languages</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">English</span>
+                <span class="skill-tag">Hindi</span>
               </div>
             </div>
           </div>
@@ -331,47 +809,130 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-purple-600 text-white">
+  <section class="py-16 cta-section text-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6 fade-in">Want to Work Together?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in">I'm currently available for freelance work and full-time positions.</p>
-      <a href="contact.html" class="inline-block px-8 py-3 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition duration-300 fade-in">
-        Contact Me
-      </a>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">Want to Work Together?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto fade-in opacity-90">
+        I'm currently available for freelance work and full-time positions. Let's discuss how I can contribute to your team.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center fade-in">
+        <a href="contact.html" class="btn-download px-8 py-4 text-white rounded-lg font-bold">
+          Contact Me <i class="fas fa-envelope ml-2"></i>
+        </a>
+        <a href="projects.html" class="btn-download px-8 py-4 text-white rounded-lg font-bold" style="background: linear-gradient(135deg, var(--accent), #f59e0b);">
+          View Projects <i class="fas fa-briefcase ml-2"></i>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start">
+            <img alt="Mukesh Parmar - Full Stack Developer" 
+                 class="rounded-full h-14 w-14 border-2 border-purple-500" 
+                 src="logo/pp.jpg"
+                 width="56"
+                 height="56"
+                 loading="lazy">
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">Mukesh Parmar</h3>
+              <p class="text-gray-400">Full Stack Developer</p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-400 max-w-md">
+            Creating digital experiences that make a difference.
+          </p>
         </div>
-        <div class="flex space-x-6">
-          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
-          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
-          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
-          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter text-xl"></i></a>
+        
+        <div class="mb-8 md:mb-0">
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Quick Links</h4>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+            <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
+            <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+            <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+          </div>
         </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Connect With Me</h4>
+          <div class="flex space-x-4 justify-center md:justify-start">
+            <a href="https://linkedin.com/in/mukesh-parmar-986517258/" 
+               class="social-link text-white hover:text-white"
+               aria-label="LinkedIn profile">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+            <a href="https://github.com/Mukeshparmar04" 
+               class="social-link text-white hover:text-white"
+               aria-label="GitHub profile">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://www.codechef.com/users/pr0863cs201093" 
+               class="social-link text-white hover:text-white"
+               aria-label="CodeChef profile">
+              <i class="fas fa-code text-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/mukesh_p04/" 
+               class="social-link text-white hover:text-white"
+               aria-label="Instagram profile">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <p class="mt-2 text-sm">Designed and developed with ❤️ by Mukesh Parmar</p>
       </div>
     </div>
   </footer>
 
   <!-- Scroll to Top Button -->
-  <div class="scroll-top" id="scroll-top">
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <script>
-    // Mobile menu toggle
+    // Page loading progress
+    window.addEventListener('load', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBar.style.opacity = '0';
+        setTimeout(() => loadingBar.remove(), 300);
+      }, 500);
+    });
+
+    // Mobile menu toggle with accessibility improvements
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
       mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('block');
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      // Update icon
+      const icon = navToggle.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !mobileMenu.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+      }
     });
 
     // Scroll to top button
@@ -392,23 +953,70 @@
       });
     });
 
-    // Add fade-in animation to elements when they come into view
+    // Enhanced fade-in animation with Intersection Observer
     const fadeElements = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
           fadeObserver.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.1});
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
 
     fadeElements.forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       fadeObserver.observe(el);
+    });
+
+    // Animate progress bars when in view
+    const progressBars = document.querySelectorAll('.skill-progress');
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const progressBar = entry.target;
+          progressBar.style.width = progressBar.style.width;
+        }
+      });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => {
+      progressObserver.observe(bar);
+    });
+
+    // Smooth scrolling for anchor links with offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+      // Escape key closes mobile menu
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        navToggle.focus();
+      }
     });
   </script>
 </body>

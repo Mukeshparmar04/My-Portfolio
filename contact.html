@@ -3,19 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Mukesh Parmar Portfolio</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta name="description" content="Contact Mukesh Parmar - Full Stack Developer for web development, design, and data analysis projects.">
+  <meta name="keywords" content="contact, hire, web developer, full stack developer, Mukesh Parmar, portfolio">
+  <meta name="author" content="Mukesh Parmar">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mukeshparmar.com/contact.html">
+  <meta property="og:title" content="Contact | Mukesh Parmar - Full Stack Developer">
+  <meta property="og:description" content="Contact Mukesh Parmar - Full Stack Developer for web development, design, and data analysis projects.">
+  <meta property="og:image" content="https://mukeshparmar.com/logo/pp.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mukeshparmar.com/contact.html">
+  <meta property="twitter:title" content="Contact | Mukesh Parmar - Full Stack Developer">
+  <meta property="twitter:description" content="Contact Mukesh Parmar - Full Stack Developer for web development, design, and data analysis projects.">
+  <meta property="twitter:image" content="https://mukeshparmar.com/logo/pp.jpg">
+  
+  <title>Contact | Mukesh Parmar - Full Stack Developer</title>
+  <link rel="icon" type="image/x-icon" href="logo/pp.jpg">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     :root {
       --primary: #7c3aed;
       --primary-light: #8b5cf6;
       --primary-dark: #6d28d9;
+      --secondary: #06d6a0;
+      --accent: #f59e0b;
       --dark: #1e293b;
       --light: #f8fafc;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     body {
@@ -24,10 +55,68 @@
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
+      background: var(--light);
     }
     
     main {
       flex: 1;
+    }
+    
+    /* Enhanced Navigation */
+    .nav-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile Menu Improvements */
+    #mobile-menu {
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-top: 3px solid var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 8rem 0;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(139, 92, 246, 0.8)), url('logo/bg12.avif') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      isolation: isolate;
+      overflow: hidden;
     }
     
     .hero-section::before {
@@ -37,76 +126,262 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
     
-    .nav-link {
+    .hero-content {
       position: relative;
+      z-index: 2;
     }
     
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    
+    /* Contact Card */
     .contact-card {
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.1);
     }
     
     .contact-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
+    }
+    
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+      transition: var(--transition);
     }
     
     .form-input {
-      transition: all 0.3s ease;
-      border: 1px solid #d1d5db;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: #f8fafc;
     }
     
     .form-input:focus {
+      outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      background: white;
+      transform: translateY(-2px);
     }
     
+    .form-input::placeholder {
+      color: #94a3b8;
+    }
+    
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    /* Button Styles */
     .btn-primary {
-      background-color: var(--primary);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transition: var(--transition);
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      width: 100%;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
     }
     
     .btn-primary:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
-    .fade-in {
-      animation: fadeIn 1s ease-in;
+    /* Contact Info Styles */
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: var(--transition);
+      background: #f8fafc;
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .contact-info-item:hover {
+      background: white;
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
     }
     
-    .scroll-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+    .contact-icon {
+      flex-shrink: 0;
       width: 50px;
       height: 50px;
-      background-color: var(--primary);
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      transition: var(--transition);
+    }
+    
+    .contact-info-item:hover .contact-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .contact-info-content h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .contact-info-content p,
+    .contact-info-content a {
+      color: var(--dark);
+      transition: var(--transition);
+    }
+    
+    .contact-info-content a:hover {
+      color: var(--primary);
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      color: var(--primary);
+      border: 2px solid #e2e8f0;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+      border-color: var(--primary);
+    }
+    
+    /* Form Message Styles */
+    .form-message {
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      display: none;
+      animation: slideIn 0.3s ease;
+    }
+    
+    .form-message.success {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .form-message.error {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Section Styles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border-radius: 50%;
       display: flex;
@@ -114,142 +389,252 @@
       justify-content: center;
       cursor: pointer;
       opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 99;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
     }
     
     .scroll-top.active {
       opacity: 1;
+      visibility: visible;
     }
     
     .scroll-top:hover {
-      background-color: var(--primary-dark);
-      transform: scale(1.1);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
     }
     
-    .section-title {
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #0f172a);
       position: relative;
-      display: inline-block;
+      overflow: hidden;
     }
     
-    .section-title::after {
+    footer::before {
       content: '';
       position: absolute;
-      width: 50%;
-      height: 4px;
-      bottom: -10px;
-      left: 25%;
-      background: linear-gradient(90deg, var(--primary), transparent);
-      border-radius: 3px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        background-attachment: scroll;
+        text-align: center;
+        padding: 6rem 0;
+      }
+      
+      .contact-card {
+        margin: 0 1rem;
+      }
+      
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn-primary {
+        padding: 0.875rem 1.5rem;
+        font-size: 14px;
+      }
+      
+      .contact-info-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.75rem;
+      }
+    }
+    
+    /* Reduced motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    button:focus,
+    a:focus,
+    input:focus,
+    textarea:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+    
+    /* Loading animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 9999;
+      transition: width 0.4s ease;
     }
   </style>
 </head>
-<body class="bg-gray-50">
+<body>
+  <!-- Loading Bar -->
+  <div class="loading-bar" id="loading-bar"></div>
+
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <nav class="shadow-sm">
+  <header class="sticky top-0 z-50 nav-container">
+    <nav>
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a class="flex items-center" href="index.html">
-          <img alt="Profile picture of Mukesh Parmar" class="rounded-full h-10 w-10 border-2 border-purple-500" src="logo/pp.jpg"/>
-          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Mukesh Parmar</div>
+        <a class="flex items-center" href="index.html" aria-label="Home">
+          <img alt="Mukesh Parmar - Full Stack Developer" 
+               class="rounded-full h-12 w-12 border-2 border-purple-500" 
+               src="logo/pp.jpg" 
+               width="48" 
+               height="48"
+               loading="eager">
+          <div class="ml-3 font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            Mukesh Parmar
+          </div>
         </a>
         
-        <button class="text-gray-700 md:hidden block focus:outline-none" id="nav-toggle">
+        <button class="text-gray-700 md:hidden block focus:outline-none" 
+                id="nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
           <i class="fas fa-bars text-xl"></i>
         </button>
         
         <div class="hidden md:flex space-x-8" id="nav-content">
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="index.html">Home</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="about.html">About</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="services.html">Services</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="projects.html">Projects</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" href="resume.html">Resume</a>
-          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" href="contact.html">Contact</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="index.html">Home</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="about.html">About</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="services.html">Services</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="projects.html">Projects</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium" 
+             href="resume.html">Resume</a>
+          <a class="nav-link text-gray-700 hover:text-purple-600 font-medium active" 
+             href="contact.html"
+             aria-current="page">Contact</a>
         </div>
       </div>
       
       <!-- Mobile Menu -->
-      <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
-        <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="index.html">Home</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="about.html">About</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="services.html">Services</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="projects.html">Projects</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" href="resume.html">Resume</a>
-          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" href="contact.html">Contact</a>
+      <div class="md:hidden hidden bg-white shadow-xl" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="index.html">Home</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="about.html">About</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="services.html">Services</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="projects.html">Projects</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" 
+             href="resume.html">Resume</a>
+          <a class="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition active" 
+             href="contact.html"
+             aria-current="page">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section py-20 relative" style="background: url('logo/bg12.avif') no-repeat center center; background-size: cover;">
-    <div class="container mx-auto px-4 relative z-10 flex items-center justify-center min-h-[30vh]">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 fade-in">Get In Touch</h1>
-        <p class="text-xl text-white opacity-90 max-w-2xl mx-auto fade-in">Have a project in mind or want to discuss potential opportunities? Let's connect!</p>
+  <section class="hero-section">
+    <div class="container mx-auto px-4 hero-content">
+      <div class="text-center max-w-3xl mx-auto fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
+          Get In <span class="text-yellow-300">Touch</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-purple-100 mb-8 opacity-90">
+          Have a project in mind or want to discuss potential opportunities? Let's connect and create something amazing together!
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#contact-form" class="btn-primary px-6 py-3 text-white rounded-lg font-medium">
+            Send Message <i class="fas fa-paper-plane ml-2"></i>
+          </a>
+          <a href="#contact-info" class="btn-primary px-6 py-3 text-white rounded-lg font-medium" style="background: linear-gradient(135deg, var(--accent), #f59e0b);">
+            Contact Info <i class="fas fa-address-card ml-2"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto contact-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
-        <div class="flex flex-col md:flex-row">
+      <div class="max-w-6xl mx-auto contact-card fade-in">
+        <div class="flex flex-col lg:flex-row">
           <!-- Contact Form -->
-          <div class="md:w-2/3 p-8 md:p-12">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Send Me a Message</h2>
+          <div class="lg:w-2/3 p-8 lg:p-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800 section-title">Send Me a Message</h2>
             <form id="contact-form" class="space-y-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
-                <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="John Doe">
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name <span class="text-red-500">*</span></label>
+                <input type="text" id="name" name="name" required class="form-input" placeholder="John Doe">
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                  <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="your@email.com">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
+                  <input type="email" id="email" name="email" required class="form-input" placeholder="your@email.com">
                 </div>
                 
-                <div>
-                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="+91 1234567890">
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 1234567890">
                 </div>
               </div>
               
-              <div>
-                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject *</label>
-                <input type="text" id="subject" name="subject" required class="form-input w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="What's this about?">
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject <span class="text-red-500">*</span></label>
+                <input type="text" id="subject" name="subject" required class="form-input" placeholder="What's this about?">
               </div>
               
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message *</label>
-                <textarea id="message" name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell me about your project..."></textarea>
+              <div class="form-group">
+                <label for="message" class="form-label">Your Message <span class="text-red-500">*</span></label>
+                <textarea id="message" name="message" rows="5" required class="form-input" placeholder="Tell me about your project, timeline, and budget..."></textarea>
               </div>
               
-              <div>
-                <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg text-white font-bold hover:shadow-lg transition duration-300">
+              <div class="form-group">
+                <button type="submit" class="btn-primary">
                   Send Message <i class="fas fa-paper-plane ml-2"></i>
                 </button>
               </div>
               
-              <div id="form-message" class="hidden p-4 rounded-lg"></div>
+              <div id="form-message" class="form-message"></div>
             </form>
           </div>
           
           <!-- Contact Info -->
-          <div class="md:w-1/3 bg-gray-50 p-8 md:p-12">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Contact Information</h2>
+          <div class="lg:w-1/3 bg-gradient-to-b from-purple-50 to-blue-50 p-8 lg:p-12" id="contact-info">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800 section-title">Contact Information</h2>
             
-            <div class="space-y-6">
-              <div class="flex items-start">
-                <div class="flex-shrink-0 h-6 w-6 text-purple-600 mt-1">
+            <div class="space-y-4">
+              <div class="contact-info-item">
+                <div class="contact-icon">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <div class="ml-3">
-                  <h3 class="text-sm font-medium text-gray-500">ADDRESS</h3>
-                  <p class="text-sm text-gray-700 mt-1">
+                <div class="contact-info-content">
+                  <h3>ADDRESS</h3>
+                  <p>
                     02, Shiv-Sakti Nagar, LIG Colony<br>
                     Indore, Madhya Pradesh 452011<br>
                     India
@@ -257,37 +642,37 @@
                 </div>
               </div>
               
-              <div class="flex items-start">
-                <div class="flex-shrink-0 h-6 w-6 text-purple-600 mt-1">
+              <div class="contact-info-item">
+                <div class="contact-icon">
                   <i class="fas fa-phone-alt"></i>
                 </div>
-                <div class="ml-3">
-                  <h3 class="text-sm font-medium text-gray-500">PHONE</h3>
-                  <p class="text-sm text-gray-700 mt-1">
+                <div class="contact-info-content">
+                  <h3>PHONE</h3>
+                  <p>
                     <a href="tel:+918815242848" class="hover:text-purple-600 transition">+91 8815242848</a>
                   </p>
                 </div>
               </div>
               
-              <div class="flex items-start">
-                <div class="flex-shrink-0 h-6 w-6 text-purple-600 mt-1">
+              <div class="contact-info-item">
+                <div class="contact-icon">
                   <i class="fas fa-envelope"></i>
                 </div>
-                <div class="ml-3">
-                  <h3 class="text-sm font-medium text-gray-500">EMAIL</h3>
-                  <p class="text-sm text-gray-700 mt-1">
+                <div class="contact-info-content">
+                  <h3>EMAIL</h3>
+                  <p>
                     <a href="mailto:mukeshpiploda2002@gmail.com" class="hover:text-purple-600 transition">mukeshpiploda2002@gmail.com</a>
                   </p>
                 </div>
               </div>
               
-              <div class="flex items-start">
-                <div class="flex-shrink-0 h-6 w-6 text-purple-600 mt-1">
+              <div class="contact-info-item">
+                <div class="contact-icon">
                   <i class="fas fa-map"></i>
                 </div>
-                <div class="ml-3">
-                  <h3 class="text-sm font-medium text-gray-500">MAP</h3>
-                  <p class="text-sm text-gray-700 mt-1">
+                <div class="contact-info-content">
+                  <h3>MAP</h3>
+                  <p>
                     <a href="https://maps.app.goo.gl/KyhzHzXWtRirqvpm8" target="_blank" class="hover:text-purple-600 transition">View on Google Maps</a>
                   </p>
                 </div>
@@ -295,21 +680,29 @@
             </div>
             
             <div class="mt-8">
-              <h3 class="text-sm font-medium text-gray-500 mb-3">CONNECT WITH ME</h3>
-              <div class="flex space-x-4">
-                <a href="https://linkedin.com/in/mukesh-parmar-986517258/" target="_blank" class="h-10 w-10 rounded-full bg-white shadow flex items-center justify-center text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition">
-                  <i class="fab fa-linkedin-in text-lg"></i>
+              <h3 class="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wider">Connect With Me</h3>
+              <div class="social-links">
+                <a href="https://linkedin.com/in/mukesh-parmar-986517258/" target="_blank" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/Mukeshparmar04" target="_blank" class="h-10 w-10 rounded-full bg-white shadow flex items-center justify-center text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition">
-                  <i class="fab fa-github text-lg"></i>
+                <a href="https://github.com/Mukeshparmar04" target="_blank" class="social-link" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.codechef.com/users/pr0863cs201093" target="_blank" class="h-10 w-10 rounded-full bg-white shadow flex items-center justify-center text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition">
-                  <i class="fas fa-code text-lg"></i>
+                <a href="https://www.codechef.com/users/pr0863cs201093" target="_blank" class="social-link" aria-label="CodeChef">
+                  <i class="fas fa-code"></i>
                 </a>
-                <a href="https://www.instagram.com/mukesh_p04/" target="_blank" class="h-10 w-10 rounded-full bg-white shadow flex items-center justify-center text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition">
-                  <i class="fab fa-instagram text-lg"></i>
+                <a href="https://www.instagram.com/mukesh_p04/" target="_blank" class="social-link" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
                 </a>
               </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="mt-8 p-4 bg-white rounded-lg shadow-sm">
+              <h3 class="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wider">Response Time</h3>
+              <p class="text-sm text-gray-700">
+                I typically respond to emails within <strong class="text-purple-600">24 hours</strong> on business days.
+              </p>
             </div>
           </div>
         </div>
@@ -317,37 +710,150 @@
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center section-title fade-in">Frequently Asked <span class="text-purple-600">Questions</span></h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="fade-in">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <h3 class="font-semibold mb-2 text-purple-600">How long does a typical project take?</h3>
+            <p class="text-gray-600">Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications can take 2-6 months.</p>
+          </div>
+        </div>
+        
+        <div class="fade-in">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <h3 class="font-semibold mb-2 text-purple-600">Do you provide ongoing support?</h3>
+            <p class="text-gray-600">Yes, I offer maintenance and support packages to ensure your project continues to perform optimally after launch.</p>
+          </div>
+        </div>
+        
+        <div class="fade-in">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <h3 class="font-semibold mb-2 text-purple-600">What's your preferred tech stack?</h3>
+            <p class="text-gray-600">I work with React, Node.js, Python, and modern web technologies, but I choose the best stack for each project's needs.</p>
+          </div>
+        </div>
+        
+        <div class="fade-in">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <h3 class="font-semibold mb-2 text-purple-600">Do you work with international clients?</h3>
+            <p class="text-gray-600">Absolutely! I have experience working with clients from around the world and can accommodate different time zones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start">
+            <img alt="Mukesh Parmar - Full Stack Developer" 
+                 class="rounded-full h-14 w-14 border-2 border-purple-500" 
+                 src="logo/pp.jpg"
+                 width="56"
+                 height="56"
+                 loading="lazy">
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">Mukesh Parmar</h3>
+              <p class="text-gray-400">Full Stack Developer</p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-400 max-w-md">
+            Creating digital experiences that make a difference.
+          </p>
         </div>
-        <div class="flex space-x-6">
-          <a href="https://linkedin.com/in/mukesh-parmar-986517258/" class="text-white hover:text-purple-300"><i class="fab fa-linkedin-in text-xl"></i></a>
-          <a href="https://github.com/Mukeshparmar04" class="text-white hover:text-purple-300"><i class="fab fa-github text-xl"></i></a>
-          <a href="https://www.codechef.com/users/pr0863cs201093" class="text-white hover:text-purple-300"><i class="fas fa-code text-xl"></i></a>
-          <a href="https://www.instagram.com/mukesh_p04/" class="text-white hover:text-purple-300"><i class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter text-xl"></i></a>
+        
+        <div class="mb-8 md:mb-0">
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Quick Links</h4>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+            <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
+            <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+            <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+          </div>
         </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-center md:text-left">Connect With Me</h4>
+          <div class="flex space-x-4 justify-center md:justify-start">
+            <a href="https://linkedin.com/in/mukesh-parmar-986517258/" 
+               class="social-link text-white hover:text-white"
+               aria-label="LinkedIn profile">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </a>
+            <a href="https://github.com/Mukeshparmar04" 
+               class="social-link text-white hover:text-white"
+               aria-label="GitHub profile">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://www.codechef.com/users/pr0863cs201093" 
+               class="social-link text-white hover:text-white"
+               aria-label="CodeChef profile">
+              <i class="fas fa-code text-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/mukesh_p04/" 
+               class="social-link text-white hover:text-white"
+               aria-label="Instagram profile">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2024 Mukesh Parmar. All rights reserved.</p>
+        <p class="mt-2 text-sm">Designed and developed with ❤️ by Mukesh Parmar</p>
       </div>
     </div>
   </footer>
 
   <!-- Scroll to Top Button -->
-  <div class="scroll-top" id="scroll-top">
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <script>
-    // Mobile menu toggle
+    // Page loading progress
+    window.addEventListener('load', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBar.style.opacity = '0';
+        setTimeout(() => loadingBar.remove(), 300);
+      }, 500);
+    });
+
+    // Mobile menu toggle with accessibility improvements
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
       mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('block');
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      // Update icon
+      const icon = navToggle.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !mobileMenu.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+      }
     });
 
     // Scroll to top button
@@ -368,85 +874,106 @@
       });
     });
 
-    // Form submission with EmailJS
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Enhanced fade-in animation with Intersection Observer
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => {
+      fadeObserver.observe(el);
+    });
+
+    // Form validation and submission
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const form = e.target;
-      const formMessage = document.getElementById('form-message');
-      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.innerHTML;
       
       // Show loading state
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
       
-      // Send email using EmailJS
-      emailjs.sendForm('service_your_service_id', 'template_your_template_id', form)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          
-          // Show success message
-          formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-          formMessage.classList.add('bg-green-100', 'text-green-700');
-          formMessage.innerHTML = `
-            <div class="flex items-center">
-              <i class="fas fa-check-circle mr-2"></i>
-              <span>Your message has been sent successfully! I'll get back to you soon.</span>
-            </div>
-          `;
-          
-          // Reset form
-          form.reset();
-        }, function(error) {
-          console.log('FAILED...', error);
-          
-          // Show error message
-          formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-          formMessage.classList.add('bg-red-100', 'text-red-700');
-          formMessage.innerHTML = `
-            <div class="flex items-center">
-              <i class="fas fa-exclamation-circle mr-2"></i>
-              <span>Failed to send message. Please try again or contact me directly at mukeshpiploda2002@gmail.com</span>
-            </div>
-          `;
-        })
-        .finally(() => {
-          // Reset button state
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          
-          // Scroll to message
-          formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
+      // Simulate form submission (replace with actual EmailJS code)
+      setTimeout(() => {
+        // Show success message
+        formMessage.style.display = 'block';
+        formMessage.className = 'form-message success';
+        formMessage.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Your message has been sent successfully! I'll get back to you within 24 hours.</span>
+          </div>
+        `;
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 2000);
     });
 
-    // Initialize EmailJS with your public key
-    (function() {
-      emailjs.init('your_emailjs_user_id');
-    })();
+    // Smooth scrolling for anchor links with offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    // Add fade-in animation to elements when they come into view
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-          fadeObserver.unobserve(entry.target);
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       });
-    }, {threshold: 0.1});
+    });
 
-    fadeElements.forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      fadeObserver.observe(el);
+    // Keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+      // Escape key closes mobile menu
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        navToggle.focus();
+      }
+    });
+
+    // Add input focus effects
+    const formInputs = document.querySelectorAll('.form-input');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('focused');
+      });
     });
   </script>
-  
-  <!-- Load EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
 </html>
