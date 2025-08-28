@@ -31,6 +31,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // Initialize EmailJS with your public key
+      emailjs.init("YnhnM-UegSZyp9B9R"); // Replace with your actual EmailJS public key
+    })();
+  </script>
+  
   <style>
     :root {
       --primary: #7c3aed;
@@ -892,7 +901,7 @@
       fadeObserver.observe(el);
     });
 
-    // Form validation and submission
+    // Form validation and submission with EmailJS
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
@@ -906,28 +915,42 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
       
-      // Simulate form submission (replace with actual EmailJS code)
-      setTimeout(() => {
-        // Show success message
-        formMessage.style.display = 'block';
-        formMessage.className = 'form-message success';
-        formMessage.innerHTML = `
-          <div class="flex items-center">
-            <i class="fas fa-check-circle mr-2"></i>
-            <span>Your message has been sent successfully! I'll get back to you within 24 hours.</span>
-          </div>
-        `;
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-        
-        // Scroll to message
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 2000);
+      // Send form data using EmailJS
+      emailjs.sendForm('service_adxizas', 'template_cdk4w9o', this)
+        .then(() => {
+          // Show success message
+          formMessage.style.display = 'block';
+          formMessage.className = 'form-message success';
+          formMessage.innerHTML = `
+            <div class="flex items-center">
+              <i class="fas fa-check-circle mr-2"></i>
+              <span>Your message has been sent successfully! I'll get back to you within 24 hours.</span>
+            </div>
+          `;
+          
+          // Reset form
+          contactForm.reset();
+        })
+        .catch((error) => {
+          // Show error message
+          formMessage.style.display = 'block';
+          formMessage.className = 'form-message error';
+          formMessage.innerHTML = `
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-circle mr-2"></i>
+              <span>Sorry, there was an error sending your message. Please try again later.</span>
+            </div>
+          `;
+          console.error('EmailJS Error:', error);
+        })
+        .finally(() => {
+          // Reset button state
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+          
+          // Scroll to message
+          formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
     });
 
     // Smooth scrolling for anchor links with offset for fixed header
